@@ -1,5 +1,6 @@
 *.sdf
 *.opendb
+*.html
 
 # Compiled Object files
 *.slo
