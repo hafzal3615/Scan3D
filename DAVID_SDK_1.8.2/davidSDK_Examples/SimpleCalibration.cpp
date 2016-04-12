@@ -21,6 +21,8 @@ void main_SimpleCalibration()
 		david::Client david;
 		david.Connect();
 
+		printf("Hammad sucks");
+
 		david.sls().SetScreenID(0);
 		david.sls().SelectCamera("Logitech HD Pro Webcam C920 (4076D97F)"); 
 
