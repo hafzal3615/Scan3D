@@ -79,6 +79,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\main.cpp" />
+    <ClCompile Include="..\Perimetre.cpp" />
     <ClCompile Include="..\SimpleCalibration.cpp" />
     <ClCompile Include="..\SimpleShapeFusion.cpp" />
     <ClCompile Include="..\SimpleStructuredLightScanner.cpp" />
@@ -87,6 +88,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Examples.h" />
+    <ClInclude Include="..\Perimetre.h" />
     <ClInclude Include="..\SimpleCalibration.h" />
     <ClInclude Include="..\SimpleShapeFusion.h" />
     <ClInclude Include="..\SimpleStructuredLightScanner.h" />

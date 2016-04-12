@@ -33,6 +33,9 @@
     <ClCompile Include="..\SimpleCalibration.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\Perimetre.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\SimpleTurntable.h">
@@ -51,6 +54,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\SimpleCalibration.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Perimetre.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

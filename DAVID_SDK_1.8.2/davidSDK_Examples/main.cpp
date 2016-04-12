@@ -3,6 +3,7 @@
 #include "SimpleStructuredLightScanner.h"
 #include "SimpleShapeFusion.h"
 #include "TimedScans.h"
+#include "Perimetre.h"
 
 //ih8git
 
@@ -13,6 +14,7 @@
 void main() 
 {
 	//examples::main_SimpleTurntable();
+	examples::main_Perimetre();
 	examples::main_SimpleCalibration();
 	//examples::main_SimpleStructuredLightScanner();
 	//examples::main_SimpleShapeFusion();
