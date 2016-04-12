@@ -1,0 +1,34 @@
+﻿  TurntableJsonRpc.cpp
+  StructuredLightScannerJsonRpc.cpp
+  StructuredLightScannerD4Lib.cpp
+  ShapeFusionJsonRpc.cpp
+  ShapeFusionD4Lib.cpp
+  MeasureJsonRpc.cpp
+  MainWindowJsonRpc.cpp
+  IStructuredLightScanner.cpp
+  IShapeFusion.cpp
+  Exceptions.cpp
+  ErrorCodes.cpp
+  Common.cpp
+  ClientJsonRpc.cpp
+  ClientD4Lib.cpp
+  json_writer.cpp
+  json_value.cpp
+  json_reader.cpp
+  networking.cpp
+c1xx : fatal error C1083: Cannot open source file: '..\jsonrpc\src\networking.cpp': No such file or directory
+  netstring.cpp
+c1xx : fatal error C1083: Cannot open source file: '..\jsonrpc\src\netstring.cpp': No such file or directory
+  jsonrpc_tcpserver.cpp
+c1xx : fatal error C1083: Cannot open source file: '..\jsonrpc\src\jsonrpc_tcpserver.cpp': No such file or directory
+  Generating Code...
+  Compiling...
+  jsonrpc_tcpclient.cpp
+c1xx : fatal error C1083: Cannot open source file: '..\jsonrpc\src\jsonrpc_tcpclient.cpp': No such file or directory
+  jsonrpc_server.cpp
+c1xx : fatal error C1083: Cannot open source file: '..\jsonrpc\src\jsonrpc_server.cpp': No such file or directory
+  jsonrpc_handler.cpp
+c1xx : fatal error C1083: Cannot open source file: '..\jsonrpc\src\jsonrpc_handler.cpp': No such file or directory
+  jsonrpc_client.cpp
+c1xx : fatal error C1083: Cannot open source file: '..\jsonrpc\src\jsonrpc_client.cpp': No such file or directory
+  Generating Code...

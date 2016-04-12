@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 2013 for Windows Desktop
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Examples", "Examples.vcxproj", "{590861BE-3456-43A5-8043-FD34A9DA435F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3717F793-D30D-4283-BE59-7C5A27B2F4ED} = {3717F793-D30D-4283-BE59-7C5A27B2F4ED}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "davidSDK", "..\..\davidSDK\workspace vc12\davidSDK.vcxproj", "{3717F793-D30D-4283-BE59-7C5A27B2F4ED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{590861BE-3456-43A5-8043-FD34A9DA435F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{590861BE-3456-43A5-8043-FD34A9DA435F}.Debug|Win32.Build.0 = Debug|Win32
+		{590861BE-3456-43A5-8043-FD34A9DA435F}.Debug|Win32.Deploy.0 = Debug|Win32
+		{590861BE-3456-43A5-8043-FD34A9DA435F}.Release|Win32.ActiveCfg = Release|Win32
+		{590861BE-3456-43A5-8043-FD34A9DA435F}.Release|Win32.Build.0 = Release|Win32
+		{3717F793-D30D-4283-BE59-7C5A27B2F4ED}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3717F793-D30D-4283-BE59-7C5A27B2F4ED}.Debug|Win32.Build.0 = Debug|Win32
+		{3717F793-D30D-4283-BE59-7C5A27B2F4ED}.Release|Win32.ActiveCfg = Release|Win32
+		{3717F793-D30D-4283-BE59-7C5A27B2F4ED}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

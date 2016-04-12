@@ -1,0 +1,242 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="json">
+      <UniqueIdentifier>{d7f5ea0a-f67d-48ac-b32c-9606c2387d11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="jsonrpc">
+      <UniqueIdentifier>{9d877876-5d1b-49d6-9a6b-a5e71b48c82e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="json\src">
+      <UniqueIdentifier>{245a6f6a-a9f3-48f1-99a2-d5acad9f736f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="jsonrpc\src">
+      <UniqueIdentifier>{a9839698-9283-4f51-a94e-30b6576f4d76}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Common.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\david.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ErrorCodes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Exceptions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\JsonRpcFunctions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\json\value.h">
+      <Filter>json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\json\writer.h">
+      <Filter>json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\json\autolink.h">
+      <Filter>json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\json\config.h">
+      <Filter>json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\json\features.h">
+      <Filter>json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\json\forwards.h">
+      <Filter>json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\json\json.h">
+      <Filter>json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\json\reader.h">
+      <Filter>json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\json\src\json_batchallocator.h">
+      <Filter>json\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\jsonrpc\jsonrpc_handler.h">
+      <Filter>jsonrpc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\jsonrpc\jsonrpc_server.h">
+      <Filter>jsonrpc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\jsonrpc\jsonrpc_tcpclient.h">
+      <Filter>jsonrpc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\jsonrpc\jsonrpc_tcpserver.h">
+      <Filter>jsonrpc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\jsonrpc\netstring.h">
+      <Filter>jsonrpc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\jsonrpc\networking.h">
+      <Filter>jsonrpc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\jsonrpc\jsonrpc.h">
+      <Filter>jsonrpc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\jsonrpc\jsonrpc_client.h">
+      <Filter>jsonrpc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\jsonrpc\jsonrpc_common.h">
+      <Filter>jsonrpc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\IStructuredLightScanner.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\StructuredLightScannerJsonRpc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\IMainWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MainWindowJsonRpc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ClientJsonRpc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ITurntable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\TurntableJsonRpc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\IShapeFusion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\IMeasure.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ShapeFusionJsonRpc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MeasureJsonRpc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\IModules.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\d4lib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\StructuredLightScannerD4Lib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ShapeFusionD4Lib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\FastVector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\D4Ptr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ClientD4Lib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\ErrorCodes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Exceptions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\json\src\json_reader.cpp">
+      <Filter>json\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\json\src\json_value.cpp">
+      <Filter>json\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\json\src\json_writer.cpp">
+      <Filter>json\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\jsonrpc\src\jsonrpc_server.cpp">
+      <Filter>jsonrpc\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\jsonrpc\src\jsonrpc_tcpclient.cpp">
+      <Filter>jsonrpc\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\jsonrpc\src\jsonrpc_tcpserver.cpp">
+      <Filter>jsonrpc\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\jsonrpc\src\netstring.cpp">
+      <Filter>jsonrpc\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\jsonrpc\src\networking.cpp">
+      <Filter>jsonrpc\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\jsonrpc\src\jsonrpc_client.cpp">
+      <Filter>jsonrpc\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\jsonrpc\src\jsonrpc_handler.cpp">
+      <Filter>jsonrpc\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\StructuredLightScannerJsonRpc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\IStructuredLightScanner.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ClientJsonRpc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MainWindowJsonRpc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\TurntableJsonRpc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ShapeFusionJsonRpc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MeasureJsonRpc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\IShapeFusion.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\StructuredLightScannerD4Lib.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ShapeFusionD4Lib.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Common.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ClientD4Lib.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\json\src\json_internalarray.inl">
+      <Filter>json\src</Filter>
+    </None>
+    <None Include="..\json\src\json_internalmap.inl">
+      <Filter>json\src</Filter>
+    </None>
+    <None Include="..\json\src\json_valueiterator.inl">
+      <Filter>json\src</Filter>
+    </None>
+    <None Include="..\json\src\sconscript">
+      <Filter>json\src</Filter>
+    </None>
+  </ItemGroup>
+</Project>

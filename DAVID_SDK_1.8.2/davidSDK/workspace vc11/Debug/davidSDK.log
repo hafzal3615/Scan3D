@@ -1,0 +1,21 @@
+﻿  TurntableJsonRpc.cpp
+  TcpClient.cpp
+  StructuredLightScannerJsonRpc.cpp
+  StructuredLightScannerD4Lib.cpp
+  ShapeFusionJsonRpc.cpp
+  ShapeFusionD4Lib.cpp
+  NetworkHelper.cpp
+  MeasureJsonRpc.cpp
+  MainWindowJsonRpc.cpp
+  IStructuredLightScanner.cpp
+  IShapeFusion.cpp
+  Exceptions.cpp
+  ErrorCodes.cpp
+  Common.cpp
+  ClientJsonRpc.cpp
+  ClientD4Lib.cpp
+  json_writer.cpp
+  json_value.cpp
+  json_reader.cpp
+  Generating Code...
+  davidSDK.vcxproj -> C:\Users\Hammad\Documents\Hammad School UT\Study Abroad\ECP Spring '15\Innovation Project - Scan 3D\DAVID_SDK_1.8.2\davidSDK_Examples\workspace vc11\Debug\davidSDK.lib

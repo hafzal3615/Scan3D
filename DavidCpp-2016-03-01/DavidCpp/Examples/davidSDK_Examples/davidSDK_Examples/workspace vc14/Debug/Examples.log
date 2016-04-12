@@ -1,0 +1,12 @@
+﻿C:\Program Files (x86)\MSBuild\14.0\bin\Microsoft.Common.CurrentVersion.targets(1610,5): warning : The referenced project '..\..\davidSDK\workspace vc14\davidSDK.vcxproj' does not exist.
+  TimedScans.cpp
+c:\users\hammad\documents\hammad school ut\study abroad\ecp spring '15\innovation project - scan 3d\davidcpp-2016-03-01\davidcpp\examples\davidsdk_examples\davidsdk_examples\timedscans.cpp(5): fatal error C1083: Cannot open include file: 'davidSDK/david.h': No such file or directory
+  SimpleTurntable.cpp
+c:\users\hammad\documents\hammad school ut\study abroad\ecp spring '15\innovation project - scan 3d\davidcpp-2016-03-01\davidcpp\examples\davidsdk_examples\davidsdk_examples\simpleturntable.cpp(5): fatal error C1083: Cannot open include file: 'davidSDK/david.h': No such file or directory
+  SimpleStructuredLightScanner.cpp
+c:\users\hammad\documents\hammad school ut\study abroad\ecp spring '15\innovation project - scan 3d\davidcpp-2016-03-01\davidcpp\examples\davidsdk_examples\davidsdk_examples\simplestructuredlightscanner.cpp(3): fatal error C1083: Cannot open include file: 'davidSDK/david.h': No such file or directory
+  SimpleShapeFusion.cpp
+c:\users\hammad\documents\hammad school ut\study abroad\ecp spring '15\innovation project - scan 3d\davidcpp-2016-03-01\davidcpp\examples\davidsdk_examples\davidsdk_examples\simpleshapefusion.cpp(5): fatal error C1083: Cannot open include file: 'davidSDK/david.h': No such file or directory
+  SimpleCalibration.cpp
+c:\users\hammad\documents\hammad school ut\study abroad\ecp spring '15\innovation project - scan 3d\davidcpp-2016-03-01\davidcpp\examples\davidsdk_examples\davidsdk_examples\simplecalibration.cpp(5): fatal error C1083: Cannot open include file: 'davidSDK/david.h': No such file or directory
+  Generating Code...

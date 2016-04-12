@@ -1,0 +1,7 @@
+﻿  SimpleCalibration.cpp
+c:\users\hammad\documents\hammad school ut\study abroad\ecp spring '15\innovation project - scan 3d\david_sdk_1.8.2\davidsdk_examples\simplecalibration.cpp(35): error C2146: syntax error: missing ';' before identifier 'david'
+c:\users\hammad\documents\hammad school ut\study abroad\ecp spring '15\innovation project - scan 3d\david_sdk_1.8.2\davidsdk_examples\simplecalibration.cpp(35): error C3867: 'david::IStructuredLightScanner::GetCameraPropertyNames': non-standard syntax; use '&' to create a pointer to member
+c:\users\hammad\documents\hammad school ut\study abroad\ecp spring '15\innovation project - scan 3d\david_sdk_1.8.2\davidsdk_examples\simplecalibration.cpp(40): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\hammad\documents\hammad school ut\study abroad\ecp spring '15\innovation project - scan 3d\david_sdk_1.8.2\davidsdk_examples\simplecalibration.cpp(41): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\hammad\documents\hammad school ut\study abroad\ecp spring '15\innovation project - scan 3d\david_sdk_1.8.2\davidsdk_examples\simplecalibration.cpp(42): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\hammad\documents\hammad school ut\study abroad\ecp spring '15\innovation project - scan 3d\david_sdk_1.8.2\davidsdk_examples\simplecalibration.cpp(43): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data

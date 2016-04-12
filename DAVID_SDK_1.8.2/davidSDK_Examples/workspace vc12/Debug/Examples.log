@@ -1,0 +1,12 @@
+﻿  TimedScans.cpp
+  SimpleTurntable.cpp
+  SimpleStructuredLightScanner.cpp
+  SimpleShapeFusion.cpp
+  SimpleCalibration.cpp
+c:\users\hammad\documents\hammad school ut\study abroad\ecp spring '15\innovation project - scan 3d\david_sdk_1.8.2\davidsdk_examples\simplecalibration.cpp(44): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\hammad\documents\hammad school ut\study abroad\ecp spring '15\innovation project - scan 3d\david_sdk_1.8.2\davidsdk_examples\simplecalibration.cpp(45): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\hammad\documents\hammad school ut\study abroad\ecp spring '15\innovation project - scan 3d\david_sdk_1.8.2\davidsdk_examples\simplecalibration.cpp(46): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\hammad\documents\hammad school ut\study abroad\ecp spring '15\innovation project - scan 3d\david_sdk_1.8.2\davidsdk_examples\simplecalibration.cpp(47): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  main.cpp
+  Generating Code...
+LINK : fatal error LNK1104: cannot open file 'C:\Users\Hammad\Documents\Hammad School UT\Study Abroad\ECP Spring '15\Innovation Project - Scan 3D\DAVID_SDK_1.8.2\davidSDK_Examples\workspace vc12\Debug\davidSDK.lib'

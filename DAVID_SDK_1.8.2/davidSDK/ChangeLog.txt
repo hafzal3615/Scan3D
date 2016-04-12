@@ -1,0 +1,145 @@
+--------------------------------------------------------------------
+ 2015-09-17: What's New in DAVID SDK Version 1.8.2
+--------------------------------------------------------------------
+Bugfix:
+- fixed camera calibration bug (introduced in 1.8.1)
+
+
+--------------------------------------------------------------------
+ 2015-09-08: What's New in DAVID SDK Version 1.8.1
+--------------------------------------------------------------------
+Bugfix:
+- fixed Vertex Qualities when Fusing with textures
+- fixed OBJ export with textures to current folder
+
+
+--------------------------------------------------------------------
+ 2015-09-04: What's New in DAVID SDK Version 1.8.0
+--------------------------------------------------------------------
+New features:
++ Vertices can now have Vertex Qualities [-1,1]. For now, used only in Fusion results
++ Fusion: Replaced parameter "bool closeHoles" by "float holeSizeThresRel", to define a hole size threshold, closing small holes and keeping larger holes open 
++ Fusion: Set Vertex Qualities: 1 for all "original" vertices. Values in [-1,0] for "closed holes", depending on each hole's size
++ IShapeFusion: New function GetVertexQualities
++ IShapeFusion: New function InvertTriangleOrientation
++ IShapeFusion: New function DuplicateMesh
+
+
+--------------------------------------------------------------------
+ 2015-08-06: What's New in DAVID SDK Version 1.7.4
+--------------------------------------------------------------------
+New features:
++ New function IShapeFusion::RemoveSelectedVertices
+
+Misc:
+- SetBackgroundPlanes: Parameters camResX and camResY not necessary any more
+- Changed alignment parameter type in d4lib from reference to pointer so that DLL has pure C interface
+
+--------------------------------------------------------------------
+ 2015-07-31: What's New in DAVID SDK Version 1.7.3
+--------------------------------------------------------------------
+Misc:
+- SetBackgroundPlanes: New parameters camResX and camResY, so SetBackgroundPlanes will work when camera is not running yet
+
+Bugfix:
+- Fusion: Avoid crash when Fusing a large number of textured scans
+
+
+--------------------------------------------------------------------
+ 2015-07-28: What's New in DAVID SDK Version 1.7.2
+--------------------------------------------------------------------
+New features:
+- Coarse Alignment: now returns alignment quality (overlap percentage)
+- Scanning: New function SetBackgroundPlanes that allows to define the scanning background mathematically
+
+Bugfix:
+- fixed CoarseAlignment over JsonRPC (bug from v1.7.0)
+- fixed CoarseAlignment with given axis
+
+
+--------------------------------------------------------------------
+ 2015-07-24: What's New in DAVID SDK Version 1.7.1
+--------------------------------------------------------------------
+New features:
+- Calibration: IStructuredLightScanner::Calibrate now returns calibration marker info
+- Calibration: New function GetCalibrationError to analyse result from Calibrate
+- Global Fine Alignment: Added parameters maxTranslation and maxRotation to limit the drift (like in Pair Fine Alignment)
+
+Misc:
+- Fine Alignment: Improved drift limits using mesh's center of gravity --> more robust vs. outliers
+
+
+--------------------------------------------------------------------
+ 2015-07-22: What's New in DAVID SDK Version 1.7.0
+--------------------------------------------------------------------
+New features:
+- Coarse Alignment: New "whitelist" parameters (poses plus tolerances), e.g. to specify a very rough alignment solutions that the new solution should be similar to
+
+Misc:
+- Coarse Alignment: renamed parameter "forbidden" poses to "blacklist(ed)"
+- Coarse Alignment: Parameter list replaced by struct CoarseAlignParams
+- Fine Alignment: Parameter list replaced by struct FineAlignParams
+- Global Fine Alignment: Parameter list replaced by struct GlobalFineAlignParams
+
+Bugfix:
+- Avoid Coarse Align crash when useTexture>99
+
+
+--------------------------------------------------------------------
+ 2015-07-09: What's New in DAVID SDK Version 1.6.1
+--------------------------------------------------------------------
+New features:
+- Coarse Alignment: new parameters forbiddenFrames (and tolerances), to specify alignment solutions that have been wrong, e.g. for a "Retry"
+- Coarse Alignment: additional parameter "knownAngleTolerance" accompanying "knownAngle"
+
+
+--------------------------------------------------------------------
+ 2015-07-06: What's New in DAVID SDK Version 1.6.0
+--------------------------------------------------------------------
+New features:
+- Coarse Alignment now accepts a Contact Region Pair to restrict alignment (D4Lib only) 
+- Fine Alignment: Added parameters maxTranslation and maxRotation to limit the drift
+
+Bugfix:
+- D4Lib: Coarse and Fine Alignment: Fixed error code to d4error_AlignFailed when alignment finds no solution
+
+
+--------------------------------------------------------------------
+ 2015-06-22: What's New in DAVID SDK Version 1.5.5
+--------------------------------------------------------------------
+Misc:
+- Alignment: Faster initialization in some cases
+- Pattern projection window: no taskbar icon
+- Pattern projection window: enforce always-on-top
+- Pattern projection window: do not grab focus on creation
+
+
+--------------------------------------------------------------------
+ 2015-05-13: What's New in DAVID SDK Version 1.5.4
+--------------------------------------------------------------------
+New features:
+- Implemented SetPose in JSON interface
+- New parameter "maxNumIterations" for FineReg and GlobalFineReg
+
+Bugfix:
+- Fixed crash in GlobalFineReg
+
+
+--------------------------------------------------------------------
+ 2015-04-12: What's New in DAVID SDK Version 1.5.2
+--------------------------------------------------------------------
+Bugfix:
+- Fixed compiling with Visual Studio 2013
+
+
+--------------------------------------------------------------------
+ 2015-04-07: What's New in DAVID SDK Version 1.5.1
+--------------------------------------------------------------------
+New features:
+- Get/SetCodedLightPhaseShiftMode now supports PatternColor and Frequencies
+
+Bugfix:
+- Fixed compiling with Visual Studio 2013
+
+
+(older versions not listed here)

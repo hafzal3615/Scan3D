@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\ClientD4Lib.h" />
+    <ClInclude Include="..\ClientJsonRpc.h" />
+    <ClInclude Include="..\Common.h" />
+    <ClInclude Include="..\d4lib.h" />
+    <ClInclude Include="..\D4Ptr.h" />
+    <ClInclude Include="..\david.h" />
+    <ClInclude Include="..\ErrorCodes.h" />
+    <ClInclude Include="..\Exceptions.h" />
+    <ClInclude Include="..\FastVector.h" />
+    <ClInclude Include="..\IMainWindow.h" />
+    <ClInclude Include="..\IMeasure.h" />
+    <ClInclude Include="..\IModules.h" />
+    <ClInclude Include="..\IShapeFusion.h" />
+    <ClInclude Include="..\IStructuredLightScanner.h" />
+    <ClInclude Include="..\ITurntable.h" />
+    <ClInclude Include="..\JsonRpcFunctions.h" />
+    <ClInclude Include="..\jsonrpc\jsonrpc.h" />
+    <ClInclude Include="..\jsonrpc\jsonrpc_client.h" />
+    <ClInclude Include="..\jsonrpc\jsonrpc_common.h" />
+    <ClInclude Include="..\jsonrpc\jsonrpc_handler.h" />
+    <ClInclude Include="..\jsonrpc\jsonrpc_server.h" />
+    <ClInclude Include="..\jsonrpc\jsonrpc_tcpclient.h" />
+    <ClInclude Include="..\jsonrpc\jsonrpc_tcpserver.h" />
+    <ClInclude Include="..\jsonrpc\netstring.h" />
+    <ClInclude Include="..\jsonrpc\networking.h" />
+    <ClInclude Include="..\json\autolink.h" />
+    <ClInclude Include="..\json\config.h" />
+    <ClInclude Include="..\json\features.h" />
+    <ClInclude Include="..\json\forwards.h" />
+    <ClInclude Include="..\json\json.h" />
+    <ClInclude Include="..\json\reader.h" />
+    <ClInclude Include="..\json\src\json_batchallocator.h" />
+    <ClInclude Include="..\json\value.h" />
+    <ClInclude Include="..\json\writer.h" />
+    <ClInclude Include="..\MainWindowJsonRpc.h" />
+    <ClInclude Include="..\MeasureJsonRpc.h" />
+    <ClInclude Include="..\ShapeFusionD4Lib.h" />
+    <ClInclude Include="..\ShapeFusionJsonRpc.h" />
+    <ClInclude Include="..\StructuredLightScannerD4Lib.h" />
+    <ClInclude Include="..\StructuredLightScannerJsonRpc.h" />
+    <ClInclude Include="..\TurntableJsonRpc.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\jsonrpc\src\jsonrpc_client.cpp" />
+    <ClCompile Include="..\jsonrpc\src\jsonrpc_handler.cpp" />
+    <ClCompile Include="..\jsonrpc\src\jsonrpc_server.cpp" />
+    <ClCompile Include="..\jsonrpc\src\jsonrpc_tcpclient.cpp" />
+    <ClCompile Include="..\jsonrpc\src\jsonrpc_tcpserver.cpp" />
+    <ClCompile Include="..\jsonrpc\src\netstring.cpp" />
+    <ClCompile Include="..\jsonrpc\src\networking.cpp" />
+    <ClCompile Include="..\json\src\json_reader.cpp" />
+    <ClCompile Include="..\json\src\json_value.cpp" />
+    <ClCompile Include="..\json\src\json_writer.cpp" />
+    <ClCompile Include="..\src\ClientD4Lib.cpp" />
+    <ClCompile Include="..\src\ClientJsonRpc.cpp" />
+    <ClCompile Include="..\src\Common.cpp" />
+    <ClCompile Include="..\src\ErrorCodes.cpp" />
+    <ClCompile Include="..\src\Exceptions.cpp" />
+    <ClCompile Include="..\src\IShapeFusion.cpp" />
+    <ClCompile Include="..\src\IStructuredLightScanner.cpp" />
+    <ClCompile Include="..\src\MainWindowJsonRpc.cpp" />
+    <ClCompile Include="..\src\MeasureJsonRpc.cpp" />
+    <ClCompile Include="..\src\ShapeFusionD4Lib.cpp" />
+    <ClCompile Include="..\src\ShapeFusionJsonRpc.cpp" />
+    <ClCompile Include="..\src\StructuredLightScannerD4Lib.cpp" />
+    <ClCompile Include="..\src\StructuredLightScannerJsonRpc.cpp" />
+    <ClCompile Include="..\src\TurntableJsonRpc.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\json\src\json_internalarray.inl" />
+    <None Include="..\json\src\json_internalmap.inl" />
+    <None Include="..\json\src\json_valueiterator.inl" />
+    <None Include="..\json\src\sconscript" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{3717F793-D30D-4283-BE59-7C5A27B2F4ED}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>davidSDK</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..;..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Lib>
+      <AdditionalDependencies>ws2_32.lib</AdditionalDependencies>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..;..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <Lib>
+      <AdditionalDependencies>ws2_32.lib</AdditionalDependencies>
+    </Lib>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

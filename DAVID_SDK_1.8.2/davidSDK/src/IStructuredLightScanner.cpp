@@ -1,0 +1,75 @@
+//=============================================================================
+//
+// BSD 3-Clause License
+//
+// Copyright © 2013-2015, DAVID 3D Solutions GbR
+// All rights reserved.
+//
+// Redistribution and use in source and binary forms, 
+// with or without modification, are permitted provided that 
+// the following conditions are met:
+//
+// - Redistributions of source code must retain the above copyright notice, 
+//   this list of conditions and the following disclaimer.
+// - Redistributions in binary form must reproduce the above copyright notice, 
+//   this list of conditions and the following disclaimer in the documentation 
+//   and/or other materials provided with the distribution.
+// - Neither the name of DAVID 3D Solutions GbR nor the names of its contributors 
+//   may be used to endorse or promote products derived from this software 
+//   without specific prior written permission.
+//
+// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
+// ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, 
+// THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
+// IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, 
+// INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, 
+// PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) 
+// HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT 
+// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, 
+// EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+//
+//=============================================================================
+
+#include "davidSDK/IStructuredLightScanner.h"
+#include <algorithm>
+
+namespace david { 
+
+//=============================================================================
+// ImageFormat
+//=============================================================================
+
+ImageFormat::ImageFormat(int width, int height, PixelFormat pixelFormat, double fps)
+	: width(width)
+	, height(height)
+	, pixelFormat(pixelFormat)
+	, fps(fps)
+{
+}
+
+
+//=============================================================================
+// IStructuredLightScanner
+//=============================================================================
+
+void IStructuredLightScanner::GetCalibrationError(double& maxDelta, double& rmsError, const std::vector<CalibPoint>& calibPoints)
+{
+	// Calculate calibration error
+	double sum = 0.0;
+	rmsError = 0.0;
+	maxDelta = 0.0;
+	for (size_t c = 0; c < calibPoints.size(); ++c)
+	{
+		double x = calibPoints[c].measuredPos2d[0] - calibPoints[c].projectedPos2d[0];
+		double y = calibPoints[c].measuredPos2d[1] - calibPoints[c].projectedPos2d[1];
+		double deltaSquared = x*x + y*y;
+		sum += deltaSquared;
+		double delta = sqrt(deltaSquared);
+		maxDelta = std::max(delta, maxDelta);
+	}
+
+	if(calibPoints.size() > 0) rmsError = sqrt(sum/(double)calibPoints.size());
+}
+
+
+} // namespace
