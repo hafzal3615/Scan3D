@@ -12,7 +12,7 @@ import numpy as np
 # Permet d'obtenir t tableau des points sous la forme [ [x][y][z] ]
 
 # Mettre le chemin du nuage de points. Ne pas avoir d'espaces dans des noms !
-filepath = """C:\\Users\\Hammad\\Documents\\Hammad School UT\\Study Abroad\\ECP Spring '15\\Courses\\PROJ_P2017 - Innovation Project Scan 3D\\Pied_Geraldine_v1_separateur_point.asc"""
+filepath = """C:\\Users\\Jay\\Documents\\Scans\\3d.asc"""
 file = open(filepath,"r")
 
 def pts_of_list(l):
@@ -399,7 +399,7 @@ def plot_plane(ax, pl, clr):
 #%% Plan obtenu avec le scanner Breuckmann et low-cost
 a = 1
 b = 1
-c = 0.99
+c = 0.001
 d = 100
 
 pl = (a,b,c,d)
@@ -410,7 +410,7 @@ eps2 = 2
 eta = 2
 mu = 8.5
 
-t = getpts(file, 500)
+t = getpts(file, 1000)
 
 graph(t, pl, 80)
 main(t, pl, eps1, eps2, eta, mu)
