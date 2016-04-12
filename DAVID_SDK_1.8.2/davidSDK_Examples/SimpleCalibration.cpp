@@ -32,7 +32,12 @@ void main_SimpleCalibration()
 		// Select screen and camera.
 		david.sls().SetScreenID(2);
 		david.sls().SelectCamera("Logitech HD Pro Webcam C920 (4076D97F)");
-
+		/*
+		
+		JAY FUCKING SUCKS
+		
+		
+		*/
 		// Tells DAVID server to calibrate, and save calibration parameters to .cal files.
 
 		david.sls().Calibrate(150.0);
