@@ -1,6 +1,7 @@
 #include "davidSDK/david.h"
 #include <vector>
 #include <time.h>
+#include <fstream>
 #include "Perimetre.h"
 
 namespace examples {
@@ -9,8 +10,30 @@ namespace examples {
 		
 	}
 
+	/* Gets a cloud of points from the file at the specified filename
+	*	Can handle both .asc and .obj files by using the appropriate method
+	*/
 	std::list<Point3D> getpts(const std::string& filename) {
+		std::size_t pos = filename.find('.');
+		if (pos != std::string::npos) {
+			std::string ext = filename.substr(pos, 4);
 
+			// Verify that the compare function does what you think it does
+			if (ext.compare(".asc")) {
+				return getpts_asc(filename);
+			} 
+			else if (ext.compare(".obj")) {
+				return getpts_obj(filename);
+			}
+			else {
+				// throw error
+				return std::list<Point3D>();
+			}
+		} 
+		else {
+			// Change this to throw an error
+			return std::list<Point3D>();
+		}
 	}
 
 	std::list<Point3D> getpts_obj(const std::string & filename)
@@ -33,24 +56,43 @@ namespace examples {
 		return std::list<Point3D>();
 	}
 
+	// Gets the scalar product of two 3-vectors
 	double scalar_product(Point3D a, Point3D b)
 	{
-		return 0.0;
+		return a.x * b.x + a.y * b.y + a.z * b.z;
 	}
 
+	// Gets the scalar product of two 2-vectors
+	double scalar_product(Point2D a, Point2D b)
+	{
+		return a.x * b.x + a.y * b.y;
+	}
+
+	// Gets the norm of a 3-vector
 	double norm(Point3D a)
 	{
-		return 0.0;
+		return scalar_product(a, a);
 	}
 
+	// Gets the norm of a 2-vector
+	double norm(Point2D a)
+	{
+		return scalar_product(a, a);
+	}
+
+	// Gets the distance between two 3D points a and b
 	double dist(Point3D a, Point3D b)
 	{
-		return 0.0;
+		// Compute the magnitude of a - b (or b - a)
+		Point3D c = Point3D(a.x - b.x, a.y - b.y, a.z - b.z);
+		return norm(c);
 	}
 
+	// Gets the distance between two 2D points a and b
 	double dist(Point2D a, Point2D b)
 	{
-		return 0.0;
+		Point2D c = Point2D(a.x - b.x, a.y - b.y);
+		return norm(c);
 	}
 
 	double dist_line(Point2D a, Point3D ln)

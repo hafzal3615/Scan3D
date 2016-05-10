@@ -36,6 +36,12 @@
     <ClCompile Include="..\Perimetre.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\ECP Spring %2715\Courses\PROJ_P2017 - Innovation Project Scan 3D\Scan3D\DAVID_SDK_1.8.2\davidSDK_Examples\Point.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\ECP Spring %2715\Courses\PROJ_P2017 - Innovation Project Scan 3D\Scan3D\DAVID_SDK_1.8.2\davidSDK_Examples\Plane.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\SimpleTurntable.h">
@@ -57,6 +63,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\Perimetre.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\ECP Spring %2715\Courses\PROJ_P2017 - Innovation Project Scan 3D\Scan3D\DAVID_SDK_1.8.2\davidSDK_Examples\Point.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\ECP Spring %2715\Courses\PROJ_P2017 - Innovation Project Scan 3D\Scan3D\DAVID_SDK_1.8.2\davidSDK_Examples\Plane.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

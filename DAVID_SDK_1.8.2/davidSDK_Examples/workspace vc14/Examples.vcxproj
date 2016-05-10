@@ -78,6 +78,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\..\..\..\ECP Spring %2715\Courses\PROJ_P2017 - Innovation Project Scan 3D\Scan3D\DAVID_SDK_1.8.2\davidSDK_Examples\Plane.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\ECP Spring %2715\Courses\PROJ_P2017 - Innovation Project Scan 3D\Scan3D\DAVID_SDK_1.8.2\davidSDK_Examples\Point.cpp" />
     <ClCompile Include="..\main.cpp" />
     <ClCompile Include="..\Perimetre.cpp" />
     <ClCompile Include="..\SimpleCalibration.cpp" />
@@ -87,6 +89,8 @@
     <ClCompile Include="..\TimedScans.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\..\..\..\..\ECP Spring %2715\Courses\PROJ_P2017 - Innovation Project Scan 3D\Scan3D\DAVID_SDK_1.8.2\davidSDK_Examples\Plane.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\ECP Spring %2715\Courses\PROJ_P2017 - Innovation Project Scan 3D\Scan3D\DAVID_SDK_1.8.2\davidSDK_Examples\Point.h" />
     <ClInclude Include="..\Examples.h" />
     <ClInclude Include="..\Perimetre.h" />
     <ClInclude Include="..\SimpleCalibration.h" />

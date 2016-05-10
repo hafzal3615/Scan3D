@@ -15,7 +15,9 @@ namespace examples {
 	std::list<Point3D> section(const std::list<Point3D>& cloud, 
 		const Plane& pl, const double& eps);
 	double scalar_product(Point3D a, Point3D b);
+	double scalar_product(Point2D a, Point2D b);
 	double norm(Point3D a);
+	double norm(Point2D a);
 	double dist(Point3D a, Point3D b);
 	double dist(Point2D a, Point2D b);
 	double dist_line(Point2D a, Point3D ln);
