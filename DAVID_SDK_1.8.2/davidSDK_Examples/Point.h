@@ -1,10 +1,17 @@
 namespace examples {
 	
-	class Point {
+	class Point3D {
 	public:
 		double x;
 		double y;
 		double z;
-		Point(int x, int y, int z);
+		Point3D(int a, int b, int c);
+	};
+
+	class Point2D {
+	public:
+		double x;
+		double y;
+		Point2D(int a, int b);
 	};
 }
