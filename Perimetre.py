@@ -377,20 +377,20 @@ def plot_plane(ax, pl, clr):
 
     a_range = np.arange(-80, 80, 1)
     b_range = np.arange(-80, 80, 1)
-    
+
     if not a == 0:
         yy, zz = np.meshgrid(a_range, b_range)
-    
+
         xx = -1/a * (b * yy + c * zz + d)
         ax.plot_surface(xx, yy, zz, color=clr)
-    elif not b == 0:        
+    elif not b == 0:
         zz, xx = np.meshgrid(a_range, b_range)
-    
+
         yy = -1/b * (c * zz + a * xx + d)
-        ax.plot_surface(xx, yy, zz, color=clr)        
+        ax.plot_surface(xx, yy, zz, color=clr)
     elif not c == 0:
         xx, yy = np.meshgrid(a_range, b_range)
-        
+
         zz = -1/c * (a * xx + b * yy + d)
         ax.plot_surface(xx, yy, zz, color=clr)
     else:

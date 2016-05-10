@@ -1,7 +1,9 @@
-*.sdf
+.sdf
 *.opendb
 *.html
 
+DAVID_SDK_1.8.2/davidSDK/*
+DAVID_SDK_1.8.2/davidSDK_Documentation/*
 DAVID_SDK_1.8.2/davidSKD_Examples/workspace vc14/Debug/*
 
 ## Ignore Visual Studio temporary files, build results, and
