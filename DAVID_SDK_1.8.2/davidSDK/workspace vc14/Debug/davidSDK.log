@@ -1,1 +1,20 @@
-﻿  davidSDK.vcxproj -> C:\Users\Hammad\Documents\Hammad School UT\Study Abroad\ECP Spring '15\Courses\PROJ_P2017 - Innovation Project Scan 3D\Scan3D\DAVID_SDK_1.8.2\davidSDK_Examples\workspace vc14\Debug\davidSDK.lib
+﻿  Ignoré... (aucune modification pertinente détectée)
+  TurntableJsonRpc.cpp
+  TcpClient.cpp
+  StructuredLightScannerJsonRpc.cpp
+  StructuredLightScannerD4Lib.cpp
+  ShapeFusionJsonRpc.cpp
+  ShapeFusionD4Lib.cpp
+  NetworkHelper.cpp
+  MeasureJsonRpc.cpp
+  MainWindowJsonRpc.cpp
+  IStructuredLightScanner.cpp
+  IShapeFusion.cpp
+  Exceptions.cpp
+  ErrorCodes.cpp
+  Common.cpp
+  ClientD4Lib.cpp
+  json_writer.cpp
+  json_value.cpp
+  json_reader.cpp
+  davidSDK.vcxproj -> C:\Users\Jay\Documents\Programming\Scan3D\DAVID_SDK_1.8.2\davidSDK_Examples\workspace vc14\Debug\davidSDK.lib
