@@ -1,5 +1,4 @@
-﻿  Point.cpp
-  Plane.cpp
+﻿  Perimetre.cpp
   Génération de code en cours...
   Ignoré... (aucune modification pertinente détectée)
   TimedScans.cpp
@@ -7,5 +6,4 @@
   SimpleStructuredLightScanner.cpp
   SimpleShapeFusion.cpp
   SimpleCalibration.cpp
-  LINK : C:\Users\Jay\Documents\Programming\Scan3D\DAVID_SDK_1.8.2\davidSDK_Examples\workspace vc14\Debug\Examples.exe introuvable ou non généré par la dernière édition de liens incrémentielle ; édition de liens complète en cours
   Examples.vcxproj -> C:\Users\Jay\Documents\Programming\Scan3D\DAVID_SDK_1.8.2\davidSDK_Examples\workspace vc14\Debug\Examples.exe

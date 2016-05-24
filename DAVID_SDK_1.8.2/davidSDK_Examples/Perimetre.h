@@ -1,5 +1,7 @@
 #include <list>
 #include <string>
+#include <vector>
+#include <sstream>
 #include "Point.h"
 #include "Plane.h"
 
@@ -10,6 +12,8 @@ namespace examples {
 	std::list<Point3D> getpts(const std::string& filename);
 	std::list<Point3D> getpts_obj(const std::string& filename);
 	std::list<Point3D> getpts_asc(const std::string& filename);
+
+	std::vector<std::string> split(const std::string &s, char delim);
 
 	double dist_ptplane(Point3D pt, Plane pl);
 	std::list<Point3D> section(const std::list<Point3D>& cloud, 

@@ -18,11 +18,10 @@ namespace examples {
 		if (pos != std::string::npos) {
 			std::string ext = filename.substr(pos, 4);
 
-			// Verify that the compare function does what you think it does
-			if (ext.compare(".asc")) {
+			if (ext != ".asc") {
 				return getpts_asc(filename);
 			} 
-			else if (ext.compare(".obj")) {
+			else if (ext != ".obj") {
 				return getpts_obj(filename);
 			}
 			else {
@@ -36,13 +35,34 @@ namespace examples {
 		}
 	}
 
+	std::vector<std::string> split(const std::string &s, char delim)
+	{
+		return std::vector<std::string>();
+	}
+
 	std::list<Point3D> getpts_obj(const std::string & filename)
 	{
+		std::ifstream input("filename");
+		std::string line_data;
+
+		while (getline(input, line_data, '#')) 
+		{
+
+		}
+
 		return std::list<Point3D>();
 	}
 
 	std::list<Point3D> getpts_asc(const std::string & filename)
 	{
+		std::ifstream input("filename");
+		std::string line_data;
+
+		while (getline(input, line_data, '#'))
+		{
+
+		}
+
 		return std::list<Point3D>();
 	}
 
