@@ -125,14 +125,33 @@ namespace examples {
 		return Point3D();
 	}
 
-	Point3D tangent(Point2D a, Point2D b)
+	Point3D tangent(Point2D u, Point2D v)
 	{
-		return Point3D();
+		//    "Triplet de l'équation cartésienne du plan de la droite (UV)"
+
+		double a;
+		double b;
+		double c;
+
+		a = -(u.y - v.y);
+		b = u.x - v.x;
+		c = -(a*u.x + b*u.y);
+		
+		return Point3D(a, b, c);
 	}
 
-	double det(Point2D a, Point2D b, Point2D c)
+	double det(Point2D p, Point2D q, Point2D r)
 	{
-		return 0.0;
+		//Calculating the determinant of a special matrix with three 2D points
+
+		double sum1;
+		double sum2;
+
+		sum1 = p.x*q.y + q.x*r.y + r.x*p.y;
+		sum2 = p.x*r.y + q.x*p.y + r.x*q.y;
+		
+		return sum1-sum2;
+
 	}
 
 	bool is_rightturn(Point2D a, Point2D b, Point2D c)

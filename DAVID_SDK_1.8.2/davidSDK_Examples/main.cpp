@@ -4,6 +4,8 @@
 #include "SimpleShapeFusion.h"
 #include "TimedScans.h"
 #include "Perimetre.h"
+#include <iostream>
+#include <locale.h>
 
 //ih8git
 
@@ -13,6 +15,8 @@
 
 void main() 
 {
+	setlocale(LC_ALL, "");
+	std::cout << "LC_NIGGA" << setlocale(LC_ALL, NULL) << std::endl;
 	//examples::main_SimpleTurntable();
 	examples::main_Perimetre();
 	//examples::main_SimpleCalibration();
