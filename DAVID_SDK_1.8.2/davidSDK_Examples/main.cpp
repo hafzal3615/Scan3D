@@ -5,11 +5,8 @@
 #include "TimedScans.h"
 #include "Perimetre.h"
 
-//ih8git
-
 #include <stdio.h>  // required for printf
 #include <conio.h>  // required for _getch
-
 
 void main() 
 {

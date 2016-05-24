@@ -7,63 +7,70 @@
 namespace examples {
 
 	void main_Perimetre() {
-		
+		std::vector<Point3D> points = getpts("C:\\Users\\Jay\\Documents\\Scans\\front_1_3.obj");
 	}
 
 	/* Gets a cloud of points from the file at the specified filename
 	*	Can handle both .asc and .obj files by using the appropriate method
 	*/
-	std::list<Point3D> getpts(const std::string& filename) {
+	std::vector<Point3D> getpts(const std::string& filename) {
 		std::size_t pos = filename.find('.');
 		if (pos != std::string::npos) {
 			std::string ext = filename.substr(pos, 4);
 
-			if (ext != ".asc") {
+			if (ext == ".asc") {
 				return getpts_asc(filename);
 			} 
-			else if (ext != ".obj") {
+			else if (ext == ".obj") {
 				return getpts_obj(filename);
 			}
 			else {
 				// throw error
-				return std::list<Point3D>();
+				return std::vector<Point3D>();
 			}
 		} 
 		else {
 			// Change this to throw an error
-			return std::list<Point3D>();
+			return std::vector<Point3D>();
 		}
 	}
 
-	std::vector<std::string> split(const std::string &s, char delim)
-	{
-		return std::vector<std::string>();
-	}
-
-	std::list<Point3D> getpts_obj(const std::string & filename)
-	{
+	std::vector<Point3D> getpts_obj(const std::string & filename) {
 		std::ifstream input("filename");
 		std::string line_data;
 
-		while (getline(input, line_data, '#')) 
-		{
+		std::vector<Point3D> points = std::vector<Point3D>();
 
+		for (int count = 0; std::getline(input, line_data, '#'); ++count) {
+			std::vector<std::string> elems;
+
+			split(line_data, ' ', elems);
+
+			if (elems.at(0) == "v") {
+				// The line is valid (it starts with a v)
+				// These are pretty bad, they don't do any checks on whats in the line
+				points[count].x = std::stod("foo", NULL);
+				std::cout << points[count].x;
+				points[count].y = std::stod(elems.at(2), NULL);
+				points[count].z = std::stod(elems.at(3), NULL);
+			} 
+			else {
+				// Invalid line, throw some error
+			}
 		}
 
-		return std::list<Point3D>();
+		return points;
 	}
 
-	std::list<Point3D> getpts_asc(const std::string & filename)
-	{
+	std::vector<Point3D> getpts_asc(const std::string & filename) {
 		std::ifstream input("filename");
 		std::string line_data;
 
-		while (getline(input, line_data, '#'))
-		{
+		while (getline(input, line_data, '#')) {
 
 		}
 
-		return std::list<Point3D>();
+		return std::vector<Point3D>();
 	}
 
 	double dist_ptplane(Point3D pt, Plane pl)

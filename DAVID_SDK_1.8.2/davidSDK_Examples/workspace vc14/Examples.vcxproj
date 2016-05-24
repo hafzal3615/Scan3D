@@ -78,6 +78,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\helpers.cpp" />
     <ClCompile Include="..\main.cpp" />
     <ClCompile Include="..\Perimetre.cpp" />
     <ClCompile Include="..\Plane.cpp" />
@@ -90,6 +91,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Examples.h" />
+    <ClInclude Include="..\helpers.h" />
     <ClInclude Include="..\Perimetre.h" />
     <ClInclude Include="..\Plane.h" />
     <ClInclude Include="..\Point.h" />
