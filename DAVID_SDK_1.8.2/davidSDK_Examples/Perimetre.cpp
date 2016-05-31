@@ -7,13 +7,13 @@
 namespace examples {
 
 	void main_Perimetre() {
-		std::vector<Point3D> points = getpts("C:\\Users\\Jay\\Documents\\Scans\\front_1_3.obj");
+		std::vector<Point3D *> points = getpts("C:\\Users\\Jay\\Documents\\Scans\\front_1_3.obj");
 	}
 
 	/* Gets a cloud of points from the file at the specified filename
 	*	Can handle both .asc and .obj files by using the appropriate method
 	*/
-	std::vector<Point3D> getpts(const std::string& filename) {
+	std::vector<Point3D *> getpts(const std::string& filename) {
 		std::size_t pos = filename.find('.');
 		if (pos != std::string::npos) {
 			std::string ext = filename.substr(pos, 4);
@@ -26,43 +26,61 @@ namespace examples {
 			}
 			else {
 				// throw error
-				return std::vector<Point3D>();
+				return std::vector<Point3D *>();
 			}
 		} 
 		else {
 			// Change this to throw an error
-			return std::vector<Point3D>();
+			return std::vector<Point3D *>();
 		}
 	}
 
-	std::vector<Point3D> getpts_obj(const std::string & filename) {
-		std::ifstream input("filename");
+	std::vector<Point3D *> getpts_obj(const std::string & filename) {
+		std::ifstream input(filename);
 		std::string line_data;
 
-		std::vector<Point3D> points = std::vector<Point3D>();
+		std::vector<Point3D *> points = std::vector<Point3D *>();
 
-		for (int count = 0; std::getline(input, line_data, '#'); ++count) {
+		int count = 0;
+		bool flag = false;
+
+		while (std::getline(input, line_data) && !flag) {
 			std::vector<std::string> elems;
-
 			split(line_data, ' ', elems);
 
-			if (elems.at(0) == "v") {
-				// The line is valid (it starts with a v)
-				// These are pretty bad, they don't do any checks on whats in the line
-				points[count].x = std::stod("foo", NULL);
-				std::cout << points[count].x;
-				points[count].y = std::stod(elems.at(2), NULL);
-				points[count].z = std::stod(elems.at(3), NULL);
-			} 
+			if (elems.size() != 0 && elems.at(0) != "#") {
+				// Is not a comment or an empty line
+
+				if (elems.at(0) == "v") {
+					// The line is valid (it starts with a v)
+					// These are pretty bad, they don't do any checks on whats in the line
+					double x = std::stod(elems.at(1), NULL);
+					double y = std::stod(elems.at(2), NULL);
+					double z = std::stod(elems.at(3), NULL);
+
+					examples::Point3D *tmp_point = new examples::Point3D(x, y, z);
+					points.push_back(tmp_point);
+				}
+				else if (elems.at(0) == "vt") {
+					// Done with the normal nodes, leave the loop
+					flag = true;
+				}
+				else {
+					// Invalid line, throw some error
+				}
+
+				// Note we don't increase the count on an empty line
+				count++;
+			}
 			else {
-				// Invalid line, throw some error
+				// Comment or empty line, do nothing
 			}
 		}
 
 		return points;
 	}
 
-	std::vector<Point3D> getpts_asc(const std::string & filename) {
+	std::vector<Point3D *> getpts_asc(const std::string & filename) {
 		std::ifstream input("filename");
 		std::string line_data;
 
@@ -70,7 +88,7 @@ namespace examples {
 
 		}
 
-		return std::vector<Point3D>();
+		return std::vector<Point3D *>();
 	}
 
 	double dist_ptplane(Point3D pt, Plane pl)
@@ -132,14 +150,33 @@ namespace examples {
 		return Point3D();
 	}
 
-	Point3D tangent(Point2D a, Point2D b)
+	Point3D tangent(Point2D u, Point2D v)
 	{
-		return Point3D();
+		//    "Triplet de l'équation cartésienne du plan de la droite (UV)"
+
+		double a;
+		double b;
+		double c;
+
+		a = -(u.y - v.y);
+		b = u.x - v.x;
+		c = -(a*u.x + b*u.y);
+		
+		return Point3D(a, b, c);
 	}
 
-	double det(Point2D a, Point2D b, Point2D c)
+	double det(Point2D p, Point2D q, Point2D r)
 	{
-		return 0.0;
+		//Calculating the determinant of a special matrix with three 2D points
+
+		double sum1;
+		double sum2;
+
+		sum1 = p.x*q.y + q.x*r.y + r.x*p.y;
+		sum2 = p.x*r.y + q.x*p.y + r.x*q.y;
+		
+		return sum1-sum2;
+
 	}
 
 	bool is_rightturn(Point2D a, Point2D b, Point2D c)

@@ -4,6 +4,8 @@
 #include "SimpleShapeFusion.h"
 #include "TimedScans.h"
 #include "Perimetre.h"
+#include <iostream>
+#include <locale.h>
 
 #include <stdio.h>  // required for printf
 #include <conio.h>  // required for _getch

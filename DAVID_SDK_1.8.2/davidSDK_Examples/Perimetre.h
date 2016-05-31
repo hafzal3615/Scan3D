@@ -10,9 +10,9 @@ namespace examples {
 
 	void main_Perimetre();
 
-	std::vector<Point3D> getpts(const std::string& filename);
-	std::vector<Point3D> getpts_obj(const std::string& filename);
-	std::vector<Point3D> getpts_asc(const std::string& filename);
+	std::vector<Point3D *> getpts(const std::string& filename);
+	std::vector<Point3D *> getpts_obj(const std::string& filename);
+	std::vector<Point3D *> getpts_asc(const std::string& filename);
 
 	double dist_ptplane(Point3D pt, Plane pl);
 	std::list<Point3D> section(const std::list<Point3D>& cloud, 
