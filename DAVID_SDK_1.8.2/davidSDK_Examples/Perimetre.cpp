@@ -7,7 +7,7 @@
 namespace examples {
 
 	void main_Perimetre() {
-		std::vector<Point3D *> points = getpts("C:\\Users\\Jay\\Documents\\Scans\\front_1_3.obj");
+		std::vector<Point3D *> points = getpts("C:\\Users\\Jay\\Documents\\Scans\\3d.asc");
 	}
 
 	/* Gets a cloud of points from the file at the specified filename
@@ -35,13 +35,18 @@ namespace examples {
 		}
 	}
 
+	/* Reads in points from a .obj file and converts them into a vector of 3D points
+		Points must be in the format 
+		v <x> <y> <z> 
+		Lines starting with any character other than v are ignored, x, y and z indicate 
+		a floating point number, with . as a separator
+	*/
 	std::vector<Point3D *> getpts_obj(const std::string & filename) {
 		std::ifstream input(filename);
 		std::string line_data;
 
 		std::vector<Point3D *> points = std::vector<Point3D *>();
 
-		int count = 0;
 		bool flag = false;
 
 		while (std::getline(input, line_data) && !flag) {
@@ -58,7 +63,7 @@ namespace examples {
 					double y = std::stod(elems.at(2), NULL);
 					double z = std::stod(elems.at(3), NULL);
 
-					examples::Point3D *tmp_point = new examples::Point3D(x, y, z);
+					Point3D *tmp_point = new Point3D(x, y, z);
 					points.push_back(tmp_point);
 				}
 				else if (elems.at(0) == "vt") {
@@ -68,9 +73,6 @@ namespace examples {
 				else {
 					// Invalid line, throw some error
 				}
-
-				// Note we don't increase the count on an empty line
-				count++;
 			}
 			else {
 				// Comment or empty line, do nothing
@@ -80,15 +82,59 @@ namespace examples {
 		return points;
 	}
 
+	/* Reads in a .asc file and converts the contents of the file into a vector of 3D points
+		Points must be in the format
+		X <x> Y <y> Z <z>
+		Lines starting with anything else may crash the program. Points that use a comma instead
+		of a period as a decimal separator will be converted
+	*/
 	std::vector<Point3D *> getpts_asc(const std::string & filename) {
-		std::ifstream input("filename");
+		std::ifstream input(filename);
 		std::string line_data;
 
-		while (getline(input, line_data, '#')) {
+		std::vector<Point3D *> points = std::vector<Point3D *>();
 
+		int count = 0;
+
+		while (getline(input, line_data)) {
+			std::vector<std::string> elems;
+
+			split(line_data, ' ', elems);
+			
+			if (count > 10000) {
+				break;
+			}
+
+			if (elems.size() == 6) {
+				double x, y, z;
+				std::string xstr, ystr, zstr;
+
+				// Again, we don't do checks because we're stupid and lazy
+				if (elems.at(0) == "X") {
+					xstr = examples::myreplace(elems.at(1), ",", ".");
+					x = std::stod(elems.at(1), NULL);
+				}
+				if (elems.at(2) == "Y") {
+					ystr = examples::myreplace(elems.at(3), ",", ".");
+					y = std::stod(elems.at(3), NULL);
+				}
+				if (elems.at(4) == "Z") {
+					zstr = examples::myreplace(elems.at(5), ",", ".");
+					z = std::stod(elems.at(5), NULL);
+				}
+
+				Point3D *tmp_point = new Point3D(x, y, z);
+				points.push_back(tmp_point);
+				std::cout << points.size() << "\n";
+
+				count++;
+			}
+			else {
+				// Badly formatted line, throw some error
+			}
 		}
 
-		return std::vector<Point3D *>();
+		return points;
 	}
 
 	double dist_ptplane(Point3D pt, Plane pl)
