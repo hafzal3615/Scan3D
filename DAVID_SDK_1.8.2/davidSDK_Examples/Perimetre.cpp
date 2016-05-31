@@ -54,7 +54,7 @@ namespace examples {
 			std::vector<std::string> elems;
 			split(line_data, ' ', elems);
 
-			if (elems.size() != 0 && elems.at(0) != "#") {
+			if (count % step_len == 0 && elems.size() != 0 && elems.at(0) != "#") {
 				// Is not a comment or an empty line
 
 				if (elems.at(0) == "v") {
@@ -76,6 +76,7 @@ namespace examples {
 				else {
 					// Invalid line, throw some error
 				}
+				count++;
 			}
 			else {
 				// Comment or empty line, do nothing
