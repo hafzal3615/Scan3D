@@ -16,10 +16,10 @@
 void main() 
 {
 	setlocale(LC_ALL, "");
-	std::cout << "LC_NIGGA" << setlocale(LC_ALL, NULL) << std::endl;
+	std::cout << "LC" << setlocale(LC_ALL, NULL) << std::endl;
 	//examples::main_SimpleTurntable();
-	examples::main_Perimetre();
-	//examples::main_SimpleCalibration();
+	//examples::main_Perimetre();
+	examples::main_SimpleCalibration();
 	//examples::main_SimpleStructuredLightScanner();
 	//examples::main_SimpleShapeFusion();
 	//examples::main_TimedScans(30.0, 3);
