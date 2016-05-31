@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include <sstream>
+#include <math.h>
 #include "Point.h"
 #include "Plane.h"
 #include "helpers.h"
@@ -10,11 +11,9 @@ namespace examples {
 
 	void main_Perimetre();
 
-	std::vector<Point3D *> getpts(const std::string& filename, int num_pts);
-	std::vector<Point3D *> getpts_obj(const std::string& filename, int num_pts);
-	std::vector<Point3D *> getpts_asc(const std::string& filename, int num_pts);
-
-	int count_lines(const std::string & filename);
+	std::vector<Point3D *> getpts(const std::string& filename, int num_pts, int total_pts);
+	std::vector<Point3D *> getpts_obj(const std::string& filename, int step_len);
+	std::vector<Point3D *> getpts_asc(const std::string& filename, int step_len);
 
 	double dist_ptplane(Point3D pt, Plane pl);
 	std::vector<Point3D *> section(std::vector<Point3D *> *cloud, 

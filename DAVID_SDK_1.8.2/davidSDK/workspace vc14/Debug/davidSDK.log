@@ -1,5 +1,4 @@
-﻿  Ignoré... (aucune modification pertinente détectée)
-  TurntableJsonRpc.cpp
+﻿  TurntableJsonRpc.cpp
   TcpClient.cpp
   StructuredLightScannerJsonRpc.cpp
   StructuredLightScannerD4Lib.cpp
@@ -13,8 +12,10 @@
   Exceptions.cpp
   ErrorCodes.cpp
   Common.cpp
+  ClientJsonRpc.cpp
   ClientD4Lib.cpp
   json_writer.cpp
   json_value.cpp
   json_reader.cpp
+  Génération de code en cours...
   davidSDK.vcxproj -> C:\Users\Jay\Documents\Programming\Scan3D\DAVID_SDK_1.8.2\davidSDK_Examples\workspace vc14\Debug\davidSDK.lib

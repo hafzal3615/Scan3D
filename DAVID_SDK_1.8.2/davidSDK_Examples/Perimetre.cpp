@@ -7,22 +7,22 @@
 namespace examples {
 
 	void main_Perimetre() {
-		//std::vector<Point3D *> points = getpts("C:\\Users\\Jay\\Documents\\Scans\\3d.asc");
+		//std::vector<Point3D *> points = getpts("C:\\Users\\Jay\\Documents\\Scans\\3d.asc", 1000, 159781);
 	}
 
 	/* Gets a cloud of points from the file at the specified filename
 	*	Can handle both .asc and .obj files by using the appropriate method
 	*/
-	std::vector<Point3D *> getpts(const std::string& filename, int num_pts) {
+	std::vector<Point3D *> getpts(const std::string& filename, int num_pts, int total_pts) {
 		std::size_t pos = filename.find('.');
 		if (pos != std::string::npos) {
 			std::string ext = filename.substr(pos, 4);
 
 			if (ext == ".asc") {
-				return getpts_asc(filename, num_pts);
+				return getpts_asc(filename, (int)std::round(total_pts / num_pts));
 			} 
 			else if (ext == ".obj") {
-				return getpts_obj(filename, num_pts);
+				return getpts_obj(filename, (int)std::round(total_pts / num_pts));
 			}
 			else {
 				// throw error
@@ -41,7 +41,7 @@ namespace examples {
 		Lines starting with any character other than v are ignored, x, y and z indicate 
 		a floating point number, with . as a separator
 	*/
-	std::vector<Point3D *> getpts_obj(const std::string & filename, int num_pts) {
+	std::vector<Point3D *> getpts_obj(const std::string & filename, int step_len) {
 		std::ifstream input(filename);
 		std::string line_data;
 
@@ -68,9 +68,6 @@ namespace examples {
 					points.push_back(tmp_point);
 
 					count++;
-					if (count == num_pts) {
-						flag = true;
-					}
 				}
 				else if (elems.at(0) == "vt") {
 					// Done with the normal nodes, leave the loop
@@ -94,12 +91,11 @@ namespace examples {
 		Lines starting with anything else may crash the program. Points that use a comma instead
 		of a period as a decimal separator will be converted
 	*/
-	std::vector<Point3D *> getpts_asc(const std::string & filename, int num_pts) {
+	std::vector<Point3D *> getpts_asc(const std::string & filename, int step_len) {
 		std::ifstream input(filename);
 		std::string line_data;
 
 		std::vector<Point3D *> points = std::vector<Point3D *>();
-
 		int count = 0;
 
 		while (getline(input, line_data)) {
@@ -107,11 +103,7 @@ namespace examples {
 
 			split(line_data, ' ', elems);
 			
-			if (count > 10000) {
-				break;
-			}
-
-			if (elems.size() == 6) {
+			if (count % step_len == 0 && elems.size() == 6) {
 				double x, y, z;
 				std::string xstr, ystr, zstr;
 
@@ -132,20 +124,16 @@ namespace examples {
 				Point3D *tmp_point = new Point3D(x, y, z);
 				points.push_back(tmp_point);
 				std::cout << points.size() << "\n";
-
-				count++;
 			}
 			else {
 				// Badly formatted line, throw some error
 			}
+
+			++count;
 		}
 
 		return points;
 	}
-
-	int count_lines(const std::string & filename) {
-		return 0;
-	};
 
 	// Return the shortest distance from a point to a plane
 	double dist_ptplane(Point3D pt, Plane pl)
@@ -159,11 +147,12 @@ namespace examples {
 	/* Goes through a vector list of points and returns only those points within a certain 
 		distance of a plane. Returns a copy not a view into the original list
 	*/
-	std::vector<Point3D *> section(std::vector<Point3D *> *cloud, Plane & pl, double & eps)
+	std::vector<Point3D *> section(std::vector<Point3D *> *cloud, const Plane & pl, const double & eps)
 	{
 		std::vector<Point3D *> new_cloud = std::vector<Point3D *>();
+		int size = (int)(cloud->size());
 
-		for (int count = 0; count < cloud->size(); ++count) {
+		for (int count = 0; count < size; ++count) {
 			Point3D pt = *(cloud->at(count));
 
 			if (dist_ptplane(pt, pl) < eps) {
@@ -219,14 +208,24 @@ namespace examples {
 		return norm(c);
 	}
 
+	// Gets the distance between a point a and a line ln represented by a Point3D
 	double dist_line(Point2D a, Point3D ln)
 	{
-		return 0.0;
+		double r1 = abs(ln.x * a.x + ln.y * a.y + ln.z);
+		double r2 = sqrt(ln.x * ln.x + ln.y * ln.y);
+
+		return(r1 / r2);
 	}
 
+	// Returns a representation of the cartesian equation of the bisector of ab
 	Point3D bisector(Point2D a, Point2D b)
 	{
-		return Point3D();
+		Point2D middle = Point2D((a.x + b.x) / 2, (a.y + b.y) / 2);
+		double c = a.x - b.x;
+		double d = a.y - b.y;
+		double e = -1 * (c * middle.x + d * middle.y);
+
+		return Point3D(c, d, e);
 	}
 
 	Point3D tangent(Point2D u, Point2D v)

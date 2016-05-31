@@ -6,5 +6,6 @@ namespace examples {
 		double c;
 		double d;
 		Plane(double w, double x, double y, double z);
+		Plane();
 	};
 }

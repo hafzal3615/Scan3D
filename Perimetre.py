@@ -338,7 +338,9 @@ def main(t, pl, eps1, eps2, eta, mu):
     """Affiche la section du nuage t par le plan pl, l'enveloppe convexe
     et l'enveloppe recollée"""
 
+    print(len(t))
     t2 = section(t,pl,eps1)
+    print(len(t2))
     t3 = proj(t2,pl)
     t4 = convex(t3)
     t5 = recolle(t4,t3,eps2,eta,mu)
