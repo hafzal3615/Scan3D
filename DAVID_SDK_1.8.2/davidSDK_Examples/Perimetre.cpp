@@ -7,73 +7,177 @@
 namespace examples {
 
 	void main_Perimetre() {
-		
+		//std::vector<Point3D *> points = getpts("C:\\Users\\Jay\\Documents\\Scans\\3d.asc");
 	}
 
 	/* Gets a cloud of points from the file at the specified filename
 	*	Can handle both .asc and .obj files by using the appropriate method
 	*/
-	std::list<Point3D> getpts(const std::string& filename) {
+	std::vector<Point3D *> getpts(const std::string& filename, int num_pts) {
 		std::size_t pos = filename.find('.');
 		if (pos != std::string::npos) {
 			std::string ext = filename.substr(pos, 4);
 
-			if (ext != ".asc") {
-				return getpts_asc(filename);
+			if (ext == ".asc") {
+				return getpts_asc(filename, num_pts);
 			} 
-			else if (ext != ".obj") {
-				return getpts_obj(filename);
+			else if (ext == ".obj") {
+				return getpts_obj(filename, num_pts);
 			}
 			else {
 				// throw error
-				return std::list<Point3D>();
+				return std::vector<Point3D *>();
 			}
 		} 
 		else {
 			// Change this to throw an error
-			return std::list<Point3D>();
+			return std::vector<Point3D *>();
 		}
 	}
 
-	std::vector<std::string> split(const std::string &s, char delim)
-	{
-		return std::vector<std::string>();
-	}
-
-	std::list<Point3D> getpts_obj(const std::string & filename)
-	{
-		std::ifstream input("filename");
+	/* Reads in points from a .obj file and converts them into a vector of 3D points
+		Points must be in the format 
+		v <x> <y> <z> 
+		Lines starting with any character other than v are ignored, x, y and z indicate 
+		a floating point number, with . as a separator
+	*/
+	std::vector<Point3D *> getpts_obj(const std::string & filename, int num_pts) {
+		std::ifstream input(filename);
 		std::string line_data;
 
-		while (getline(input, line_data, '#')) 
-		{
+		std::vector<Point3D *> points = std::vector<Point3D *>();
 
+		bool flag = false;
+		int count = 0;
+
+		while (std::getline(input, line_data) && !flag) {
+			std::vector<std::string> elems;
+			split(line_data, ' ', elems);
+
+			if (elems.size() != 0 && elems.at(0) != "#") {
+				// Is not a comment or an empty line
+
+				if (elems.at(0) == "v") {
+					// The line is valid (it starts with a v)
+					// These are pretty bad, they don't do any checks on whats in the line
+					double x = std::stod(elems.at(1), NULL);
+					double y = std::stod(elems.at(2), NULL);
+					double z = std::stod(elems.at(3), NULL);
+
+					Point3D *tmp_point = new Point3D(x, y, z);
+					points.push_back(tmp_point);
+
+					count++;
+					if (count == num_pts) {
+						flag = true;
+					}
+				}
+				else if (elems.at(0) == "vt") {
+					// Done with the normal nodes, leave the loop
+					flag = true;
+				}
+				else {
+					// Invalid line, throw some error
+				}
+			}
+			else {
+				// Comment or empty line, do nothing
+			}
 		}
 
-		return std::list<Point3D>();
+		return points;
 	}
 
-	std::list<Point3D> getpts_asc(const std::string & filename)
-	{
-		std::ifstream input("filename");
+	/* Reads in a .asc file and converts the contents of the file into a vector of 3D points
+		Points must be in the format
+		X <x> Y <y> Z <z>
+		Lines starting with anything else may crash the program. Points that use a comma instead
+		of a period as a decimal separator will be converted
+	*/
+	std::vector<Point3D *> getpts_asc(const std::string & filename, int num_pts) {
+		std::ifstream input(filename);
 		std::string line_data;
 
-		while (getline(input, line_data, '#'))
-		{
+		std::vector<Point3D *> points = std::vector<Point3D *>();
 
+		int count = 0;
+
+		while (getline(input, line_data)) {
+			std::vector<std::string> elems;
+
+			split(line_data, ' ', elems);
+			
+			if (count > 10000) {
+				break;
+			}
+
+			if (elems.size() == 6) {
+				double x, y, z;
+				std::string xstr, ystr, zstr;
+
+				// Again, we don't do checks because we're stupid and lazy
+				if (elems.at(0) == "X") {
+					xstr = examples::myreplace(elems.at(1), ",", ".");
+					x = std::stod(elems.at(1), NULL);
+				}
+				if (elems.at(2) == "Y") {
+					ystr = examples::myreplace(elems.at(3), ",", ".");
+					y = std::stod(elems.at(3), NULL);
+				}
+				if (elems.at(4) == "Z") {
+					zstr = examples::myreplace(elems.at(5), ",", ".");
+					z = std::stod(elems.at(5), NULL);
+				}
+
+				Point3D *tmp_point = new Point3D(x, y, z);
+				points.push_back(tmp_point);
+				std::cout << points.size() << "\n";
+
+				count++;
+			}
+			else {
+				// Badly formatted line, throw some error
+			}
 		}
 
-		return std::list<Point3D>();
+		return points;
 	}
 
+	int count_lines(const std::string & filename) {
+		return 0;
+	};
+
+	// Return the shortest distance from a point to a plane
 	double dist_ptplane(Point3D pt, Plane pl)
 	{
-		return 0.0;
+		double r1 = abs(pl.a * pt.x + pl.b * pt.y + pl.c * pt.z + pl.d);
+		double r2 = sqrt(pl.a * pl.a + pl.b * pl.b + pl.c * pl.c);
+
+		return(r1 / r2);
 	}
 
-	std::list<Point3D> section(const std::list<Point3D>& cloud, const Plane & pl, const double & eps)
+	/* Goes through a vector list of points and returns only those points within a certain 
+		distance of a plane. Returns a copy not a view into the original list
+	*/
+	std::vector<Point3D *> section(std::vector<Point3D *> *cloud, Plane & pl, double & eps)
 	{
-		return std::list<Point3D>();
+		std::vector<Point3D *> new_cloud = std::vector<Point3D *>();
+
+		for (int count = 0; count < cloud->size(); ++count) {
+			Point3D pt = *(cloud->at(count));
+
+			if (dist_ptplane(pt, pl) < eps) {
+				// copy point into new vector
+				// This is probably pretty memory inneficient, if we knew the original cloud won't
+				//		change then we could just have your sectioned cloud be a 'view' into the original
+				new_cloud.push_back(new Point3D(pt.x, pt.y, pt.z));
+			}
+			else {
+				// discard the point
+			}
+		}
+
+		return new_cloud;
 	}
 
 	// Gets the scalar product of two 3-vectors
@@ -174,7 +278,7 @@ namespace examples {
 		return std::list<Point2D>();
 	}
 
-	double perimiter(std::list<Point2D> cloud)
+	double perimeter(std::list<Point2D> cloud)
 	{
 		return 0.0;
 	}

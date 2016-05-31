@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 ﻿  main.cpp
   Generating Code...
   Skipping... (no relevant changes detected)
+=======
+﻿  Perimetre.cpp
+c:\users\jay\documents\programming\scan3d\david_sdk_1.8.2\davidsdk_examples\perimetre.cpp(166): warning C4018: '<' : incompatibilité signed/unsigned
+  Génération de code en cours...
+  Ignoré... (aucune modification pertinente détectée)
+>>>>>>> cdf36344154a76f8d955479df64ba5e5cdfa5d7a
   TimedScans.cpp
   SimpleTurntable.cpp
   SimpleStructuredLightScanner.cpp
   SimpleShapeFusion.cpp
-  Examples.vcxproj -> C:\Users\Hammad\Documents\Hammad School UT\Study Abroad\ECP Spring '15\Courses\PROJ_P2017 - Innovation Project Scan 3D\Scan3D\DAVID_SDK_1.8.2\davidSDK_Examples\workspace vc14\Debug\Examples.exe
+  SimpleCalibration.cpp
+  Examples.vcxproj -> C:\Users\Jay\Documents\Programming\Scan3D\DAVID_SDK_1.8.2\davidSDK_Examples\workspace vc14\Debug\Examples.exe

@@ -7,16 +7,11 @@
 #include <iostream>
 #include <locale.h>
 
-//ih8git
-
 #include <stdio.h>  // required for printf
 #include <conio.h>  // required for _getch
 
-
 void main() 
 {
-	setlocale(LC_ALL, "");
-	std::cout << "LC" << setlocale(LC_ALL, NULL) << std::endl;
 	//examples::main_SimpleTurntable();
 	//examples::main_Perimetre();
 	examples::main_SimpleCalibration();
