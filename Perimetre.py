@@ -51,6 +51,7 @@ def getpts(file, num_pts):
         print(filepath[-3:])
 
     if len(t) > num_pts:
+        print(len(t))
         t = t[0::round(len(t) / num_pts)]
 
     return t
