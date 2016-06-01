@@ -384,13 +384,52 @@ namespace examples {
 		}
 	}
 
+	/* Tightens a convex hull to get it closer to the perimiter which is not necessarily
+		the convex hull
+	*/
 	std::vector<Point2D *> tighten(std::vector<Point2D *> hull, std::vector<Point2D *> cloud, 
 		double eps, double eta, double mu) {
-		return std::vector<Point2D *>();
+
+		int n = (int)(hull.size());
+		std::vector<Point2D *> hull_cpy;
+
+		for (int i = 0; i < n; i++) {
+			hull_cpy.push_back(copy(hull.at(i)));
+		}
+
+		Point2D *u = hull.at((int)(hull_cpy.size()) - 1);
+		
+		for (int i = 1; i < n; i++) {
+			if (i != 0) {
+				Point2D *v = hull.at(i - 1);
+			}
+			Point2D *v = hull.at(i);
+			int k = 0;
+			bool flag = false;
+			for (int j = 0; j < (int)(hull_cpy.size()) && !flag; j++) {
+				if (v->x == hull_cpy.at(j)->x && v->y == hull_cpy.at(j)->y) {
+					k = j;
+					flag = true;
+				}
+			}
+
+			std::vector<Point2D *> tightened = seg_tighten(*u, *v, cloud, eps, eta, mu);
+			hull_cpy.insert(hull_cpy.begin() + k, tightened.begin(), tightened.end());
+		}
+
+		return hull_cpy;
 	}
 
-	double perimeter(std::vector<Point2D *> cloud) {
-		return 0.0;
+	// Loops through a convex hull and calculates the length of the total hull
+	double perimeter(std::vector<Point2D *> hull) {
+		int n = (int)(hull.size());
+
+		double p = dist(*(hull.at(n - 1)), *(hull.at(0)));
+		for (int i = 1; i < n; i++) {
+			p += dist(*(hull.at(i - 1)), *(hull.at(i)));
+		}
+
+		return p;
 	}
 
 
