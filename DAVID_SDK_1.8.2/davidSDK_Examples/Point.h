@@ -22,6 +22,10 @@ namespace examples {
 
 	bool eq(Point2D lhs, Point2D rhs);
 	bool neq(Point2D lhs, Point2D rhs);
+
+	Point3D *copy(Point3D *pt);
+	Point2D *copy(Point2D *pt);
+
 	/*
 	bool operator==(const Point3D & lhs, const Point3D & rhs);
 	bool operator!=(const Point3D & lhs, const Point3D & rhs);

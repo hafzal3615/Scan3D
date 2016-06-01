@@ -279,11 +279,37 @@ namespace examples {
 		return true;
 	}
 
+	// Utility method so that we don't have to worry about pulling out points inside a loop
+	bool is_rightturn(std::vector<Point2D *> pts) {
+		if ((int)(pts.size()) == 3) {
+			return is_rightturn(*(pts.at(0)), *(pts.at(1)), *(pts.at(2)));
+		}
+		else {
+			// And we could even throw some error
+			return false;
+		}
+	}
+
 	std::vector<Point2D *> convex_hull(std::vector<Point2D *> cloud) {
 		lexical_sort(cloud);
 
 		if ((int)(cloud.size()) < 3) {
 			return std::vector<Point2D *>();
+		}
+
+		std::vector<Point2D *> upper = std::vector<Point2D *>();
+		std::vector<Point2D *> lower = std::vector<Point2D *>();
+
+		upper.push_back(copy(cloud.at(0)));
+		upper.push_back(copy(cloud.at(1)));
+
+		int len = (int)(cloud.size());
+		int uLen;
+		for (int i = 2; i < len; i++) {
+			upper.push_back(copy(cloud.at(i)));
+			while ((int)(upper.size()) > 2 && !is_rightturn(get_last_n(upper, 3))) {
+				upper.erase(upper.end() - 2);
+			}
 		}
 
 		return std::vector<Point2D *>();

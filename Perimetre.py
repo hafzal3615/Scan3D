@@ -343,6 +343,7 @@ def main(t, pl, eps1, eps2, eta, mu):
     print(len(t2))
     t3 = proj(t2,pl)
     t4 = convex(t3)
+    print(t4)
     t5 = recolle(t4,t3,eps2,eta,mu)
     aff(t3)
     aff_enveloppe(t4)

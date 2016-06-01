@@ -40,6 +40,14 @@ namespace examples {
 		return !eq(lhs, rhs);
 	}
 
+	Point3D *copy(Point3D *pt) {
+		return new Point3D(pt->x, pt->y, pt->z);
+	}
+
+	Point2D *copy(Point2D *pt) {
+		return new Point2D(pt->x, pt->y);
+	}
+
 	/* Ugh, not sure why these stop the program from linking properly, to investigate later
 	// Overloaded equality operator for 3D points, only true if all x, y and z are equal
 	inline bool operator==(const Point3D& lhs, const Point3D& rhs) {

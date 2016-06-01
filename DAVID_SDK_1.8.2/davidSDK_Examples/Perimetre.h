@@ -31,6 +31,7 @@ namespace examples {
 
 	double det(Point2D a, Point2D b, Point2D c);
 	bool is_rightturn(Point2D a, Point2D b, Point2D c);
+	bool is_rightturn(std::vector<Point2D *> pts);
 	std::vector<Point2D *> convex_hull(std::vector<Point2D *> cloud);
 	// convex_2
 

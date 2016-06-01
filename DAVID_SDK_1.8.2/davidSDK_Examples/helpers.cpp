@@ -36,4 +36,9 @@ namespace examples {
 	bool lexical_lt(Point2D *lhs, Point2D *rhs) {
 		return lhs->x < rhs->x;
 	}
+
+	// Gets the last n elements from a list of 2D points. Should be done with templates
+	std::vector<Point2D *> get_last_n(std::vector<Point2D *> array, int n) {
+		return std::vector<Point2D *> (array.end() - std::min((int)(array.size()), n), array.end());
+	}
 }
