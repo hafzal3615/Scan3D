@@ -9,13 +9,6 @@
 
 namespace examples {
 
-	struct pt_dist {
-		double dist;
-		Point2D point;
-		pt_dist(double d, Point2D p);
-		pt_dist();
-	};
-
 	void main_Perimetre();
 
 	std::vector<Point3D *> getpts(const std::string& filename, int num_pts, int total_pts);
@@ -43,7 +36,7 @@ namespace examples {
 	// convex_2
 
 	std::vector<Point2D *> seg_tighten(Point2D u, Point2D v,
-		std::vector<Point2D *> cloud, double eta, double mu);
+		std::vector<Point2D *> cloud, double eps, double eta, double mu);
 	std::vector<Point2D *> tighten(std::vector<Point2D *> hull,
 		std::vector<Point2D *> cloud, double eps, double eta, double mu);
 	double perimeter(std::vector<Point2D *> cloud);

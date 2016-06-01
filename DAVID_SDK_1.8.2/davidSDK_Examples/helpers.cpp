@@ -6,6 +6,16 @@
 
 namespace examples {
 
+	pt_dist::pt_dist(double d, Point2D p) {
+		dist = d;
+		point = p;
+	}
+
+	pt_dist::pt_dist() {
+		dist = 0;
+		point = Point2D();
+	}
+
 	// Split results into a pre-constructed vector
 	// Taken from http://stackoverflow.com/a/236803
 	std::vector<std::string> &split(const std::string &s, char delim, std::vector<std::string> &elems) {
@@ -40,5 +50,24 @@ namespace examples {
 	// Gets the last n elements from a list of 2D points. Should be done with templates
 	std::vector<Point2D *> get_last_n(std::vector<Point2D *> array, int n) {
 		return std::vector<Point2D *> (array.end() - std::min((int)(array.size()), n), array.end());
+	}
+
+	// Loops through a list of pt_dist and finds the one with the smallest distance
+	pt_dist get_min(std::vector<pt_dist *> v) {
+		int len = (int)(v.size());
+
+		pt_dist pd_min;
+		if (len == 0) {
+			return pt_dist();
+		}
+		else {
+			pd_min = *(v.at(0));
+		}
+
+		for (int i = 1; i < len; i++) {
+			pd_min = pd_min.dist < v.at(i)->dist ? pd_min : *(v.at(i));
+		}
+
+		return pd_min;
 	}
 }

@@ -10,16 +10,6 @@ namespace examples {
 		//std::vector<Point3D *> points = getpts("C:\\Users\\Jay\\Documents\\Scans\\3d.asc", 1000, 159781);
 	}
 
-	pt_dist::pt_dist(double d, Point2D p) {
-		dist = d;
-		point = p;
-	}
-
-	pt_dist::pt_dist() {
-		dist = 0;
-		point = Point2D();
-	}
-
 	/* Gets a cloud of points from the file at the specified filename
 	*	Can handle both .asc and .obj files by using the appropriate method
 	*/
@@ -349,7 +339,7 @@ namespace examples {
 	}
 
 	std::vector<Point2D *> seg_tighten(Point2D u, Point2D v, std::vector<Point2D *> cloud, 
-		double eta, double mu) {
+		double eps, double eta, double mu) {
 
 		double d = dist(u, v);
 		if (d < eta) {
@@ -357,7 +347,7 @@ namespace examples {
 		}
 
 		double eps2 = d / 4;
-		std::vector<Point2D *> closer = std::vector<Point2D *>();
+		std::vector<pt_dist *> closer = std::vector<pt_dist *>();
 		Point3D bis = bisector(u, v);
 		Point2D mid = Point2D((u.x + v.x) / 2, (u.y + v.y) / 2);
 		Point3D tan = tangent(u, v);
@@ -368,11 +358,9 @@ namespace examples {
 			double dbis = dist_line(x, bis);
 			double dtan = dist(x, mid);
 
-			/*
-			if (dbis < std::min(eps, eps2)) {
-				closer.push_back(new Point2D(dtan, x))
+			if (dbis < (eps < eps2 ? eps : eps2)) {
+				closer.push_back(new pt_dist(dtan, x));
 			}
-			*/
 		}
 
 		return std::vector<Point2D *>();

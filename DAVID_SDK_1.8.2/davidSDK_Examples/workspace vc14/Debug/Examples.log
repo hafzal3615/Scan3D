@@ -1,3 +1,9 @@
 ﻿  Perimetre.cpp
 c:\users\jay\documents\programming\scan3d\david_sdk_1.8.2\davidsdk_examples\perimetre.cpp(321): warning C4101: 'uLen' : variable locale non référencée
-  Examples.vcxproj -> C:\Users\Jay\Documents\Programming\Scan3D\DAVID_SDK_1.8.2\davidSDK_Examples\workspace vc14\Debug\Examples.exe
+c:\users\jay\documents\programming\scan3d\david_sdk_1.8.2\davidsdk_examples\perimetre.cpp(371): error C2589: '(' : jeton non conforme à droite de '::'
+c:\users\jay\documents\programming\scan3d\david_sdk_1.8.2\davidsdk_examples\perimetre.cpp(371): error C2059: erreur de syntaxe : '::'
+c:\users\jay\documents\programming\scan3d\david_sdk_1.8.2\davidsdk_examples\perimetre.cpp(371): error C2143: erreur de syntaxe : absence de ';' avant '{'
+  Génération de code en cours...
+  Compilation en cours...
+  main.cpp
+  Génération de code en cours...
