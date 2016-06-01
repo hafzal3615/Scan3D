@@ -363,7 +363,25 @@ namespace examples {
 			}
 		}
 
-		return std::vector<Point2D *>();
+		if (!closer.empty()) {
+			pt_dist ptd = get_min(closer);
+
+			if (ptd.dist < mu) {
+				std::vector<Point2D *> t1 = seg_tighten(u, ptd.point, cloud, eps, eta, mu);
+				std::vector<Point2D *> t2 = seg_tighten(ptd.point, v, cloud, eps, eta, mu);
+
+				t1.push_back(&(ptd.point));
+				t1.insert(t1.end(), t2.begin(), t2.end());
+
+				return t1;
+			}
+			else {
+				return std::vector<Point2D *>();
+			}
+		}
+		else {
+			return std::vector<Point2D *>();
+		}
 	}
 
 	std::vector<Point2D *> tighten(std::vector<Point2D *> hull, std::vector<Point2D *> cloud, 
