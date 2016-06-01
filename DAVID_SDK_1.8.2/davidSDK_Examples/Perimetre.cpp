@@ -290,6 +290,10 @@ namespace examples {
 		}
 	}
 
+	/* Gets the convex hull of a group of points. The convex hull is the smallest set of
+		points that fully contains the full cloud. The algorithm computes a bottom and
+		top part of the hull by wrapping around in strict left turns
+	*/
 	std::vector<Point2D *> convex_hull(std::vector<Point2D *> cloud) {
 		lexical_sort(cloud);
 
@@ -307,12 +311,31 @@ namespace examples {
 		int uLen;
 		for (int i = 2; i < len; i++) {
 			upper.push_back(copy(cloud.at(i)));
+
 			while ((int)(upper.size()) > 2 && !is_rightturn(get_last_n(upper, 3))) {
 				upper.erase(upper.end() - 2);
 			}
 		}
 
-		return std::vector<Point2D *>();
+		std::reverse(cloud.begin(), cloud.end());
+
+		lower.push_back(copy(cloud.at(0)));
+		lower.push_back(copy(cloud.at(1)));
+		for (int i = 2; i < len; i++) {
+			lower.push_back(copy(cloud.at(i)));
+
+			while ((int)(lower.size()) > 2 && !is_rightturn(get_last_n(lower, 3))) {
+				lower.erase(lower.end() - 2);
+			}
+		}
+
+		// Remove duplicates
+		lower.erase(lower.begin());
+		lower.erase(lower.end());
+
+		upper.insert(upper.end(), lower.begin(), lower.end());
+
+		return upper;
 	}
 
 	std::vector<Point2D *> seg_tighten(Point2D u, Point2D v, std::vector<Point2D *> cloud, 
