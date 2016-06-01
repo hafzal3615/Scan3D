@@ -414,6 +414,10 @@ eta = 2
 mu = 8.5
 
 t = getpts(file, 1000)
+print(t[0:10])
+print("\n")
+t.sort()
+print(t[0:10])
 
 graph(t, pl, 80)
 main(t, pl, eps1, eps2, eta, mu)

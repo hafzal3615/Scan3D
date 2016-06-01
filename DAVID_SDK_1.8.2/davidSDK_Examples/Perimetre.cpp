@@ -137,8 +137,7 @@ namespace examples {
 	}
 
 	// Return the shortest distance from a point to a plane
-	double dist_ptplane(Point3D pt, Plane pl)
-	{
+	double dist_ptplane(Point3D pt, Plane pl) {
 		double r1 = abs(pl.a * pt.x + pl.b * pt.y + pl.c * pt.z + pl.d);
 		double r2 = sqrt(pl.a * pl.a + pl.b * pl.b + pl.c * pl.c);
 
@@ -148,8 +147,7 @@ namespace examples {
 	/* Goes through a vector list of points and returns only those points within a certain 
 		distance of a plane. Returns a copy not a view into the original list
 	*/
-	std::vector<Point3D *> section(std::vector<Point3D *> *cloud, const Plane & pl, const double & eps)
-	{
+	std::vector<Point3D *> section(std::vector<Point3D *> *cloud, const Plane & pl, const double & eps) {
 		std::vector<Point3D *> new_cloud = std::vector<Point3D *>();
 		int size = (int)(cloud->size());
 
@@ -171,47 +169,66 @@ namespace examples {
 	}
 
 	// Gets the scalar product of two 3-vectors
-	double scalar_product(Point3D a, Point3D b)
-	{
+	double scalar_product(Point3D a, Point3D b) {
 		return a.x * b.x + a.y * b.y + a.z * b.z;
 	}
 
 	// Gets the scalar product of two 2-vectors
-	double scalar_product(Point2D a, Point2D b)
-	{
+	double scalar_product(Point2D a, Point2D b) {
 		return a.x * b.x + a.y * b.y;
 	}
 
 	// Gets the norm of a 3-vector
-	double norm(Point3D a)
-	{
+	double norm(Point3D a) {
 		return scalar_product(a, a);
 	}
 
 	// Gets the norm of a 2-vector
-	double norm(Point2D a)
-	{
+	double norm(Point2D a) {
 		return scalar_product(a, a);
 	}
 
 	// Gets the distance between two 3D points a and b
-	double dist(Point3D a, Point3D b)
-	{
+	double dist(Point3D a, Point3D b) {
 		// Compute the magnitude of a - b (or b - a)
 		Point3D c = Point3D(a.x - b.x, a.y - b.y, a.z - b.z);
 		return norm(c);
 	}
 
 	// Gets the distance between two 2D points a and b
-	double dist(Point2D a, Point2D b)
-	{
+	double dist(Point2D a, Point2D b) {
 		Point2D c = Point2D(a.x - b.x, a.y - b.y);
 		return norm(c);
 	}
 
+	/* Takes a point cloud and a plane represented by a Point3D and projects the 
+		points in the cloud onto the plane
+	*/
+	std::vector<Point2D *> projection(std::vector<Point3D *> cloud, Plane plane) {
+		Point3D u = Point3D(-1 * plane.b, plane.a, 0);
+		Point3D v = Point3D(-1 * plane.a * plane.c, 
+			-1 * plane.b * plane.c, 
+			plane.a * plane.a + plane.b * plane.b);
+
+		double unorm = norm(u);
+		double vnorm = norm(v);
+
+		u = Point3D(u.x / unorm, u.y / unorm, u.z / unorm);
+		v = Point3D(v.x / vnorm, v.y / vnorm, v.z / vnorm);
+
+		std::vector<Point2D *> proj;
+
+		int len = (int)(cloud.size());
+		for (int i = 0; i < len; i++) {
+			proj.push_back(new Point2D(scalar_product(*(cloud.at(i)), u),
+				scalar_product(*(cloud.at(i)), v)));
+		}
+		
+		return proj;
+	}
+
 	// Gets the distance between a point a and a line ln represented by a Point3D
-	double dist_line(Point2D a, Point3D ln)
-	{
+	double dist_line(Point2D a, Point3D ln) {
 		double r1 = abs(ln.x * a.x + ln.y * a.y + ln.z);
 		double r2 = sqrt(ln.x * ln.x + ln.y * ln.y);
 
@@ -219,8 +236,7 @@ namespace examples {
 	}
 
 	// Returns a representation of the cartesian equation of the bisector of ab
-	Point3D bisector(Point2D a, Point2D b)
-	{
+	Point3D bisector(Point2D a, Point2D b) {
 		Point2D middle = Point2D((a.x + b.x) / 2, (a.y + b.y) / 2);
 		double c = a.x - b.x;
 		double d = a.y - b.y;
@@ -229,57 +245,61 @@ namespace examples {
 		return Point3D(c, d, e);
 	}
 
-	Point3D tangent(Point2D u, Point2D v)
-	{
-		//    "Triplet de l'équation cartésienne du plan de la droite (UV)"
-
+	// Gets the triple of the line between u and v
+	Point3D tangent(Point2D u, Point2D v) {
 		double a;
 		double b;
 		double c;
 
 		a = -(u.y - v.y);
 		b = u.x - v.x;
-		c = -(a*u.x + b*u.y);
+		c = -(a * u.x + b * u.y);
 		
 		return Point3D(a, b, c);
 	}
 
-	double det(Point2D p, Point2D q, Point2D r)
-	{
-		//Calculating the determinant of a special matrix with three 2D points
-
-		double sum1;
-		double sum2;
-
-		sum1 = p.x*q.y + q.x*r.y + r.x*p.y;
-		sum2 = p.x*r.y + q.x*p.y + r.x*q.y;
+	/* Calculating the determinant of a special matrix with three 2D points
+		This is like a cross product pretty much
+	*/
+	double det(Point2D p, Point2D q, Point2D r) {
+		double sum1 = p.x * q.y + q.x * r.y + r.x * p.y;
+		double sum2 = p.x * r.y + q.x * p.y + r.x * q.y;
 		
-		return sum1-sum2;
-
+		return sum1 - sum2;
 	}
 
-	bool is_rightturn(Point2D a, Point2D b, Point2D c)
-	{
-		return false;
+	// Determine if the vectors pq and qr form a right turn on the line they define
+	bool is_rightturn(Point2D p, Point2D q, Point2D r) {
+		if (eq(p, q) || eq(q, r) || eq(p, r)) {
+			// throw error
+		}
+		else {
+			return det(p, q, r) < 0;
+		}
+		return true;
 	}
 
-	std::list<Point2D> convex_hull(std::list<Point2D> cloud)
-	{
-		return std::list<Point2D>();
+	std::vector<Point2D *> convex_hull(std::vector<Point2D *> cloud) {
+		lexical_sort(cloud);
+
+		if ((int)(cloud.size()) < 3) {
+			return std::vector<Point2D *>();
+		}
+
+		return std::vector<Point2D *>();
 	}
 
-	std::list<Point2D> seg_tighten(Point2D u, Point2D v, std::list<Point2D> cloud, double eta, double mu)
-	{
-		return std::list<Point2D>();
+	std::vector<Point2D *> seg_tighten(Point2D u, Point2D v, std::vector<Point2D *> cloud, 
+		double eta, double mu) {
+		return std::vector<Point2D *>();
 	}
 
-	std::list<Point2D> tighten(std::list<Point2D> hull, std::list<Point2D> cloud, double eps, double eta, double mu)
-	{
-		return std::list<Point2D>();
+	std::vector<Point2D *> tighten(std::vector<Point2D *> hull, std::vector<Point2D *> cloud, 
+		double eps, double eta, double mu) {
+		return std::vector<Point2D *>();
 	}
 
-	double perimeter(std::list<Point2D> cloud)
-	{
+	double perimeter(std::vector<Point2D *> cloud) {
 		return 0.0;
 	}
 
