@@ -79,23 +79,23 @@ namespace examples {
 		printf("x: %f, y: %f, z: %f\n", pt->x, pt->y, pt->z);
 	}
 
-	void print_point(std::vector<Point2D *> v) {
+	void print_vector(std::vector<Point2D *> v) {
 		int len = (int)(v.size());
 
 		printf("[");
 		for (int i = 0; i < len; i++) {
 			print_point(v.at(i));
 		}
-		printf("]");
+		printf("]\n");
 	}
 
-	void print_point(std::vector<Point3D *> v) {
+	void print_vector(std::vector<Point3D *> v) {
 		int len = (int)(v.size());
 
 		printf("[");
 		for (int i = 0; i < len; i++) {
 			print_point(v.at(i));
 		}
-		printf("]");
+		printf("]\n");
 	}
 }

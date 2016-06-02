@@ -7,7 +7,7 @@
 namespace examples {
 
 	void main_Perimetre() {
-		std::vector<Point3D *> points = getpts("C:\\Users\\Jay\\Documents\\Scans\\3d.asc", 1000, 159781);
+		std::vector<Point3D *> points = getpts("C:\\Users\\Jay\\Documents\\Scans\\3d.asc", 10000, 159781);
 
 		Plane pl = Plane(1, 1, 0.001, 100);
 
@@ -20,6 +20,21 @@ namespace examples {
 
 		std::cout << "Perimeter" << perimeter << "\n";
 	}
+
+	std::string a[] = {
+		"0%   [          ]",
+		"10%  [=         ]",
+		"20%  [==        ]",
+		"30%  [===       ]",
+		"40%  [====      ]",
+		"50%  [=====     ]",
+		"60%  [======    ]",
+		"70%  [=======   ]",
+		"80%  [========  ]",
+		"90%  [========= ]",
+		"100% [==========]"
+	};
+	std::vector<std::string> messing_around = std::vector<std::string>(a, a + 11);
 
 	/* Gets a cloud of points from the file at the specified filename
 	*	Can handle both .asc and .obj files by using the appropriate method
@@ -140,6 +155,9 @@ namespace examples {
 				// Badly formatted line, throw some error
 			}
 
+			if (count % 15978 == 0) {
+				std::cout << messing_around.at(count / 15978) << '\r' << std::flush;
+			}
 			++count;
 		}
 
@@ -202,13 +220,13 @@ namespace examples {
 	double dist(Point3D a, Point3D b) {
 		// Compute the magnitude of a - b (or b - a)
 		Point3D c = Point3D(a.x - b.x, a.y - b.y, a.z - b.z);
-		return norm(c);
+		return std::sqrt(norm(c));
 	}
 
 	// Gets the distance between two 2D points a and b
 	double dist(Point2D a, Point2D b) {
 		Point2D c = Point2D(a.x - b.x, a.y - b.y);
-		return norm(c);
+		return std::sqrt(norm(c));
 	}
 
 	/* Takes a point cloud and a plane represented by a Point3D and projects the 
@@ -305,7 +323,7 @@ namespace examples {
 		top part of the hull by wrapping around in strict left turns
 	*/
 	std::vector<Point2D *> convex_hull(std::vector<Point2D *> cloud) {
-		lexical_sort(cloud);
+		cloud = lexical_sort(cloud);
 
 		if ((int)(cloud.size()) < 3) {
 			return std::vector<Point2D *>();
@@ -340,7 +358,7 @@ namespace examples {
 
 		// Remove duplicates
 		lower.erase(lower.begin());
-		lower.erase(lower.end());
+		lower.erase(lower.end() - 1);
 
 		upper.insert(upper.end(), lower.begin(), lower.end());
 
@@ -447,15 +465,15 @@ namespace examples {
 		std::cout << "1: Entered Function\n";
 		std::vector<Point3D *> cloud2 = section(&cloud, pl, eps1);
 		std::cout << "2: Sectioned Cloud\n";
-		int len = (int)(cloud2.size());
-		Point3D first = len > 0 ? *(cloud2.at(0)) : Point3D();
-		printf("len is %d, first point is x: %f, y: %f, z: %f\n", len, first.x, first.y, first.z);
+		print_vector(cloud2);
 
 		std::vector<Point2D *> cloud3 = projection(cloud2, pl);
 		std::cout << "3: Projected Cloud\n";
+		print_vector(cloud3);
 
 		std::vector<Point2D *> cloud4 = convex_hull(cloud3);
 		std::cout << "4: Got convex hull\n";
+		print_vector(cloud4);
 
 		std::vector<Point2D *> cloud5 = tighten(cloud4, cloud3, eps2, eta, mu);
 		std::cout << "5: Tightened convex hull\n";
