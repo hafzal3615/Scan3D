@@ -18,4 +18,9 @@ namespace examples {
 	std::vector<Point2D *> get_last_n(std::vector<Point2D *>, int n);
 
 	pt_dist get_min(std::vector<pt_dist *> v);
+
+	void print_point(Point2D *pt);
+	void print_point(Point3D *pt);
+	void print_vector(std::vector<Point2D *> v);
+	void print_vector(std::vector<Point3D *> v);
 }

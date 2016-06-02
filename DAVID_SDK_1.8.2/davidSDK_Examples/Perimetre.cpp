@@ -7,7 +7,18 @@
 namespace examples {
 
 	void main_Perimetre() {
-		//std::vector<Point3D *> points = getpts("C:\\Users\\Jay\\Documents\\Scans\\3d.asc", 1000, 159781);
+		std::vector<Point3D *> points = getpts("C:\\Users\\Jay\\Documents\\Scans\\3d.asc", 1000, 159781);
+
+		Plane pl = Plane(1, 1, 0.001, 100);
+
+		double eps1 = 0.5;
+		double eps2 = 2;
+		double eta = 2;
+		double mu = 8.5;
+
+		double perimeter = calculate_perimeter(points, pl, eps1, eps2, eta, mu);
+
+		std::cout << "Perimeter" << perimeter << "\n";
 	}
 
 	/* Gets a cloud of points from the file at the specified filename
@@ -124,7 +135,6 @@ namespace examples {
 
 				Point3D *tmp_point = new Point3D(x, y, z);
 				points.push_back(tmp_point);
-				std::cout << points.size() << "\n";
 			}
 			else {
 				// Badly formatted line, throw some error
@@ -308,7 +318,6 @@ namespace examples {
 		upper.push_back(copy(cloud.at(1)));
 
 		int len = (int)(cloud.size());
-		int uLen;
 		for (int i = 2; i < len; i++) {
 			upper.push_back(copy(cloud.at(i)));
 
@@ -430,6 +439,28 @@ namespace examples {
 		}
 
 		return p;
+	}
+
+	double calculate_perimeter(std::vector<Point3D *> cloud, Plane pl, double eps1,
+		double eps2, double eta, double mu) {
+
+		std::cout << "1: Entered Function\n";
+		std::vector<Point3D *> cloud2 = section(&cloud, pl, eps1);
+		std::cout << "2: Sectioned Cloud\n";
+		int len = (int)(cloud2.size());
+		Point3D first = len > 0 ? *(cloud2.at(0)) : Point3D();
+		printf("len is %d, first point is x: %f, y: %f, z: %f\n", len, first.x, first.y, first.z);
+
+		std::vector<Point2D *> cloud3 = projection(cloud2, pl);
+		std::cout << "3: Projected Cloud\n";
+
+		std::vector<Point2D *> cloud4 = convex_hull(cloud3);
+		std::cout << "4: Got convex hull\n";
+
+		std::vector<Point2D *> cloud5 = tighten(cloud4, cloud3, eps2, eta, mu);
+		std::cout << "5: Tightened convex hull\n";
+
+		return perimeter(cloud5);
 	}
 
 

@@ -70,4 +70,32 @@ namespace examples {
 
 		return pd_min;
 	}
+
+	void print_point(Point2D *pt) {
+		printf("x: %f, y: %f\n", pt->x, pt->y);
+	}
+	
+	void print_point(Point3D *pt) {
+		printf("x: %f, y: %f, z: %f\n", pt->x, pt->y, pt->z);
+	}
+
+	void print_point(std::vector<Point2D *> v) {
+		int len = (int)(v.size());
+
+		printf("[");
+		for (int i = 0; i < len; i++) {
+			print_point(v.at(i));
+		}
+		printf("]");
+	}
+
+	void print_point(std::vector<Point3D *> v) {
+		int len = (int)(v.size());
+
+		printf("[");
+		for (int i = 0; i < len; i++) {
+			print_point(v.at(i));
+		}
+		printf("]");
+	}
 }

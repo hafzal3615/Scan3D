@@ -340,7 +340,9 @@ def main(t, pl, eps1, eps2, eta, mu):
 
     print(len(t))
     t2 = section(t,pl,eps1)
+    print("Sectioned")
     print(len(t2))
+    print(t2[0])
     t3 = proj(t2,pl)
     t4 = convex(t3)
     print(t4)
@@ -421,4 +423,5 @@ t.sort()
 print(t[0:10])
 
 graph(t, pl, 80)
-main(t, pl, eps1, eps2, eta, mu)
+perimeter = perimetre(main(t, pl, eps1, eps2, eta, mu))
+print("Perimeter: " + perimeter)

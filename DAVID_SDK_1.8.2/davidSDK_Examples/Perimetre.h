@@ -40,6 +40,8 @@ namespace examples {
 	std::vector<Point2D *> tighten(std::vector<Point2D *> hull,
 		std::vector<Point2D *> cloud, double eps, double eta, double mu);
 	double perimeter(std::vector<Point2D *> cloud);
+	double calculate_perimeter(std::vector<Point3D *> cloud, Plane plane, double eps1,
+		double eps2, double eta, double mu);
 
 } // namespace examples
 #pragma once
