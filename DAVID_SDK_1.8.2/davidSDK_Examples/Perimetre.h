@@ -11,9 +11,9 @@ namespace examples {
 
 	void main_Perimetre();
 
-	std::vector<Point3D *> getpts(const std::string& filename, int num_pts, int total_pts);
-	std::vector<Point3D *> getpts_obj(const std::string& filename, int step_len);
-	std::vector<Point3D *> getpts_asc(const std::string& filename, int step_len);
+	std::vector<Point3D *> getpts(const std::string& filename, int num_pts, int total_pts, bool verbose);
+	std::vector<Point3D *> getpts_obj(const std::string& filename, int step_len, bool verbose);
+	std::vector<Point3D *> getpts_asc(const std::string& filename, int step_len, bool verbose);
 
 	double dist_ptplane(Point3D pt, Plane pl);
 	std::vector<Point3D *> section(std::vector<Point3D *> *cloud, 
@@ -40,8 +40,8 @@ namespace examples {
 	std::vector<Point2D *> tighten(std::vector<Point2D *> hull,
 		std::vector<Point2D *> cloud, double eps, double eta, double mu);
 	double perimeter(std::vector<Point2D *> cloud);
-	double calculate_perimeter(std::vector<Point3D *> cloud, Plane plane, double eps1,
-		double eps2, double eta, double mu);
+	double calculate_perimeter(std::string filename, Plane plane, double eps1,
+		double eps2, double eta, double mu, int num_points, int filter_points, bool verbose);
 
 } // namespace examples
 #pragma once

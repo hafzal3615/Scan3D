@@ -7,7 +7,7 @@
 namespace examples {
 
 	void main_Perimetre() {
-		std::vector<Point3D *> points = getpts("C:\\Users\\Jay\\Documents\\Scans\\3d.asc", 10000, 159781);
+		std::string path = "C:\\Users\\Jay\\Documents\\Scans\\3d.asc";
 
 		Plane pl = Plane(1, 1, 0.001, 100);
 
@@ -16,7 +16,7 @@ namespace examples {
 		double eta = 2;
 		double mu = 8.5;
 
-		double perimeter = calculate_perimeter(points, pl, eps1, eps2, eta, mu);
+		double perimeter = calculate_perimeter(path, pl, eps1, eps2, eta, mu, 159781, 10000, true);
 
 		std::cout << "Perimeter: " << perimeter << "\n";
 	}
@@ -39,16 +39,16 @@ namespace examples {
 	/* Gets a cloud of points from the file at the specified filename
 	*	Can handle both .asc and .obj files by using the appropriate method
 	*/
-	std::vector<Point3D *> getpts(const std::string& filename, int num_pts, int total_pts) {
+	std::vector<Point3D *> getpts(const std::string& filename, int num_pts, int total_pts, bool verbose) {
 		std::size_t pos = filename.find('.');
 		if (pos != std::string::npos) {
 			std::string ext = filename.substr(pos, 4);
 
 			if (ext == ".asc") {
-				return getpts_asc(filename, (int)std::round(total_pts / num_pts));
+				return getpts_asc(filename, (int)std::round(total_pts / num_pts), verbose);
 			} 
 			else if (ext == ".obj") {
-				return getpts_obj(filename, (int)std::round(total_pts / num_pts));
+				return getpts_obj(filename, (int)std::round(total_pts / num_pts), verbose);
 			}
 			else {
 				// throw error
@@ -67,7 +67,7 @@ namespace examples {
 		Lines starting with any character other than v are ignored, x, y and z indicate 
 		a floating point number, with . as a separator
 	*/
-	std::vector<Point3D *> getpts_obj(const std::string & filename, int step_len) {
+	std::vector<Point3D *> getpts_obj(const std::string & filename, int step_len, bool verbose) {
 		std::ifstream input(filename);
 		std::string line_data;
 
@@ -118,7 +118,7 @@ namespace examples {
 		Lines starting with anything else may crash the program. Points that use a comma instead
 		of a period as a decimal separator will be converted
 	*/
-	std::vector<Point3D *> getpts_asc(const std::string & filename, int step_len) {
+	std::vector<Point3D *> getpts_asc(const std::string & filename, int step_len, bool verbose) {
 		std::ifstream input(filename);
 		std::string line_data;
 
@@ -156,7 +156,9 @@ namespace examples {
 			}
 
 			if (count % 15978 == 0) {
-				std::cout << messing_around.at(count / 15978) << '\r' << std::flush;
+				if (verbose) {
+					std::cout << messing_around.at(count / 15978) << '\r' << std::flush;
+				}
 			}
 			++count;
 		}
@@ -459,30 +461,30 @@ namespace examples {
 		return p;
 	}
 
-	double calculate_perimeter(std::vector<Point3D *> cloud, Plane pl, double eps1,
-		double eps2, double eta, double mu) {
+	double calculate_perimeter(std::string filename, Plane pl, double eps1,
+		double eps2, double eta, double mu, int num_points, int filter_points, bool verbose) {
 
-		std::cout << "1: Entered Function\n";
+		std::vector<Point3D *> cloud = getpts(filename, filter_points, num_points, verbose);
+
+		if (verbose) {
+			std::cout << "1: Entered Function\n";
+		}
 		std::vector<Point3D *> cloud2 = section(&cloud, pl, eps1);
-		std::cout << "2: Sectioned Cloud\n";
-		//print_vector(cloud2);
+		if (verbose) {
+			std::cout << "2: Sectioned Cloud\n";
+		}
 
 		std::vector<Point2D *> cloud3 = projection(cloud2, pl);
-		std::cout << "3: Projected Cloud\n";
-		//print_vector(cloud3);
+		if (verbose) {
+			std::cout << "3: Projected Cloud\n";
+		}
 
 		std::vector<Point2D *> cloud4 = convex_hull(cloud3);
-		std::cout << "4: Got convex hull\n";
-		//print_vector(cloud4);
-
-		/*
-		std::vector<Point2D *> cloud5 = tighten(cloud4, cloud3, eps2, eta, mu);
-		std::cout << "5: Tightened convex hull\n";
-		print_vector(cloud5);
-		*/
+		if (verbose) {
+			std::cout << "4: Got convex hull\n";
+		}
 
 		return perimeter(cloud4);
 	}
-
 
 } // namespace examples
