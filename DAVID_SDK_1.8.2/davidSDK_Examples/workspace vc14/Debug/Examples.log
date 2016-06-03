@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿  Skipping... (no relevant changes detected)
   TimedScans.cpp
   SimpleTurntable.cpp
@@ -6,3 +7,6 @@
   Point.cpp
   Plane.cpp
   Examples.vcxproj -> C:\Users\Hammad\Documents\Hammad School UT\Study Abroad\ECP Spring '15\Courses\PROJ_P2017 - Innovation Project Scan 3D\Scan3D\DAVID_SDK_1.8.2\davidSDK_Examples\workspace vc14\Debug\Examples.exe
+=======
+﻿  Examples.vcxproj -> C:\Users\Jay\Documents\Programming\Scan3D\DAVID_SDK_1.8.2\davidSDK_Examples\workspace vc14\Debug\Examples.exe
+>>>>>>> d9b648d4c5bcea51b850e1ffa7ccba2ce2e8720f

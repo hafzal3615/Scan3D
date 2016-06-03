@@ -103,10 +103,16 @@ def proj(t,pl):
     (0,u,v) est le repère orthonormé 2D du plan"""
     a,b,c,d = pl
     u = [-b,a,0]
+    print("u is: ")
+    print(u)
     u = [ i/norm(u) for i in u]
     v = [-a*c,-b*c,a*a+b*b]
+    print("v is: ")
+    print(v)
     v = [ i/norm(v) for i in v]
     res = [[prodscal(x,u),prodscal(x,v)] for x in t]
+
+    print("unorm: " + str(norm(u)) + ", vnorm: " + str(norm(v)))
     return(res)
 
 ## Affichage d'un nuage de points
@@ -338,13 +344,26 @@ def main(t, pl, eps1, eps2, eta, mu):
     """Affiche la section du nuage t par le plan pl, l'enveloppe convexe
     et l'enveloppe recollée"""
 
+    print("1: Began")
     t2 = section(t,pl,eps1)
+    print("2: Sectioned")
+    #print(t2)
+
     t3 = proj(t2,pl)
+    print("3: Projected")
+    #print(t3)
+
     t4 = convex(t3)
+    print("4: Convex Hull")
+    #print(t4)
+
     t5 = recolle(t4,t3,eps2,eta,mu)
-    aff(t3)
-    aff_enveloppe(t4)
-    aff_enveloppe(t5)
+    print("5: Tightened")
+    #print(t5)
+
+    #aff(t3)
+    #aff_enveloppe(t4)
+    #aff_enveloppe(t5)
 
     return(t5)
 
@@ -411,7 +430,12 @@ eps2 = 2
 eta = 2
 mu = 8.5
 
-t = getpts(file, 1000)
+t = getpts(file, 10000)
+print(t[0:10])
+print("\n")
+t.sort()
+print(t[0:10])
 
-graph(t, pl, 80)
-main(t, pl, eps1, eps2, eta, mu)
+#graph(t, pl, 80)
+perimeter = perimetre(main(t, pl, eps1, eps2, eta, mu))
+print("Perimeter: " + str(perimeter))
