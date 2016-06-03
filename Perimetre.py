@@ -103,10 +103,16 @@ def proj(t,pl):
     (0,u,v) est le repère orthonormé 2D du plan"""
     a,b,c,d = pl
     u = [-b,a,0]
+    print("u is: ")
+    print(u)
     u = [ i/norm(u) for i in u]
     v = [-a*c,-b*c,a*a+b*b]
+    print("v is: ")
+    print(v)
     v = [ i/norm(v) for i in v]
     res = [[prodscal(x,u),prodscal(x,v)] for x in t]
+
+    print("unorm: " + str(norm(u)) + ", vnorm: " + str(norm(v)))
     return(res)
 
 ## Affichage d'un nuage de points
@@ -341,19 +347,19 @@ def main(t, pl, eps1, eps2, eta, mu):
     print("1: Began")
     t2 = section(t,pl,eps1)
     print("2: Sectioned")
-    print(t2)
+    #print(t2)
 
     t3 = proj(t2,pl)
     print("3: Projected")
-    print(t3)
+    #print(t3)
 
     t4 = convex(t3)
     print("4: Convex Hull")
-    print(t4)
+    #print(t4)
 
     t5 = recolle(t4,t3,eps2,eta,mu)
     print("5: Tightened")
-    print(t5)
+    #print(t5)
 
     #aff(t3)
     #aff_enveloppe(t4)

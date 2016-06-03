@@ -2,6 +2,7 @@
 #include <string>
 #include <algorithm>
 #include "Point.h"
+#include "Plane.h"
 #include "helpers.h"
 
 namespace examples {
@@ -72,11 +73,15 @@ namespace examples {
 	}
 
 	void print_point(Point2D *pt) {
-		printf("x: %f, y: %f\n", pt->x, pt->y);
+		printf("[%f, %f]\n", pt->x, pt->y);
 	}
 	
 	void print_point(Point3D *pt) {
-		printf("x: %f, y: %f, z: %f\n", pt->x, pt->y, pt->z);
+		printf("[%f, %f, %f]\n", pt->x, pt->y, pt->z);
+	}
+
+	void print_plane(Plane *pl) {
+		printf("Plane: [%f, %f, %f, %f]\n", pl->a, pl->b, pl->c, pl->d);
 	}
 
 	void print_vector(std::vector<Point2D *> v) {
@@ -84,6 +89,9 @@ namespace examples {
 
 		printf("[");
 		for (int i = 0; i < len; i++) {
+			if (i != 0) {
+				printf(",");
+			}
 			print_point(v.at(i));
 		}
 		printf("]\n");

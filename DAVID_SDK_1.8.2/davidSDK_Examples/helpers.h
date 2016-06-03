@@ -22,6 +22,7 @@ namespace examples {
 
 	void print_point(Point2D *pt);
 	void print_point(Point3D *pt);
+	void print_plane(Plane *pl);
 	void print_vector(std::vector<Point2D *> v);
 	void print_vector(std::vector<Point3D *> v);
 }

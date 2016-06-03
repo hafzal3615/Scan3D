@@ -18,21 +18,21 @@ namespace examples {
 
 		double perimeter = calculate_perimeter(points, pl, eps1, eps2, eta, mu);
 
-		std::cout << "Perimeter" << perimeter << "\n";
+		std::cout << "Perimeter: " << perimeter << "\n";
 	}
 
 	std::string a[] = {
-		"0%   [          ]",
-		"10%  [=         ]",
-		"20%  [==        ]",
-		"30%  [===       ]",
-		"40%  [====      ]",
-		"50%  [=====     ]",
-		"60%  [======    ]",
-		"70%  [=======   ]",
-		"80%  [========  ]",
-		"90%  [========= ]",
-		"100% [==========]"
+		"0%   [          ] Whoo, get ready!         ",
+		"10%  [=         ] Off to a great start     ",
+		"20%  [==        ] Making progress          ",
+		"30%  [===       ] Are we there yet?        ",
+		"40%  [====      ] Geez this takes forever  ",
+		"50%  [=====     ] Halfway there!           ",
+		"60%  [======    ] Four to go               ",
+		"70%  [=======   ] It takes longer each time",
+		"80%  [========  ] Almost there...          ",
+		"90%  [========= ] So close!                ",
+		"100% [==========] Done!                    \n"
 	};
 	std::vector<std::string> messing_around = std::vector<std::string>(a, a + 11);
 
@@ -208,25 +208,25 @@ namespace examples {
 
 	// Gets the norm of a 3-vector
 	double norm(Point3D a) {
-		return scalar_product(a, a);
+		return std::sqrt(scalar_product(a, a));
 	}
 
 	// Gets the norm of a 2-vector
 	double norm(Point2D a) {
-		return scalar_product(a, a);
+		return std::sqrt(scalar_product(a, a));
 	}
 
 	// Gets the distance between two 3D points a and b
 	double dist(Point3D a, Point3D b) {
 		// Compute the magnitude of a - b (or b - a)
 		Point3D c = Point3D(a.x - b.x, a.y - b.y, a.z - b.z);
-		return std::sqrt(norm(c));
+		return norm(c);
 	}
 
 	// Gets the distance between two 2D points a and b
 	double dist(Point2D a, Point2D b) {
 		Point2D c = Point2D(a.x - b.x, a.y - b.y);
-		return std::sqrt(norm(c));
+		return norm(c);
 	}
 
 	/* Takes a point cloud and a plane represented by a Point3D and projects the 
@@ -428,13 +428,13 @@ namespace examples {
 		
 		for (int i = 1; i < n; i++) {
 			if (i != 0) {
-				Point2D *v = hull.at(i - 1);
+				Point2D *u = hull.at(i - 1);
 			}
 			Point2D *v = hull.at(i);
 			int k = 0;
 			bool flag = false;
 			for (int j = 0; j < (int)(hull_cpy.size()) && !flag; j++) {
-				if (v->x == hull_cpy.at(j)->x && v->y == hull_cpy.at(j)->y) {
+				if (v->x == (hull_cpy.at(j))->x && v->y == (hull_cpy.at(j))->y) {
 					k = j;
 					flag = true;
 				}
@@ -465,20 +465,23 @@ namespace examples {
 		std::cout << "1: Entered Function\n";
 		std::vector<Point3D *> cloud2 = section(&cloud, pl, eps1);
 		std::cout << "2: Sectioned Cloud\n";
-		print_vector(cloud2);
+		//print_vector(cloud2);
 
 		std::vector<Point2D *> cloud3 = projection(cloud2, pl);
 		std::cout << "3: Projected Cloud\n";
-		print_vector(cloud3);
+		//print_vector(cloud3);
 
 		std::vector<Point2D *> cloud4 = convex_hull(cloud3);
 		std::cout << "4: Got convex hull\n";
-		print_vector(cloud4);
+		//print_vector(cloud4);
 
+		/*
 		std::vector<Point2D *> cloud5 = tighten(cloud4, cloud3, eps2, eta, mu);
 		std::cout << "5: Tightened convex hull\n";
+		print_vector(cloud5);
+		*/
 
-		return perimeter(cloud5);
+		return perimeter(cloud4);
 	}
 
 
