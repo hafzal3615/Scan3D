@@ -1,4 +1,9 @@
+<<<<<<< HEAD
+﻿  Skipping... (no relevant changes detected)
+  TurntableJsonRpc.cpp
+=======
 ﻿  TurntableJsonRpc.cpp
+>>>>>>> d9b648d4c5bcea51b850e1ffa7ccba2ce2e8720f
   TcpClient.cpp
   StructuredLightScannerJsonRpc.cpp
   StructuredLightScannerD4Lib.cpp
@@ -17,5 +22,9 @@
   json_writer.cpp
   json_value.cpp
   json_reader.cpp
+<<<<<<< HEAD
+  davidSDK.vcxproj -> C:\Users\Hammad\Documents\Hammad School UT\Study Abroad\ECP Spring '15\Courses\PROJ_P2017 - Innovation Project Scan 3D\Scan3D\DAVID_SDK_1.8.2\davidSDK_Examples\workspace vc14\Debug\davidSDK.lib
+=======
   Génération de code en cours...
   davidSDK.vcxproj -> C:\Users\Jay\Documents\Programming\Scan3D\DAVID_SDK_1.8.2\davidSDK_Examples\workspace vc14\Debug\davidSDK.lib
+>>>>>>> d9b648d4c5bcea51b850e1ffa7ccba2ce2e8720f
