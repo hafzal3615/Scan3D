@@ -7,7 +7,29 @@
 namespace examples {
 
 	void main_Perimetre() {
-		std::string path = "C:\\Users\\Jay\\Documents\\Scans\\3d.asc";
+		
+		david::Client david;
+		david.Connect();
+
+		david.mainWindow().Show();
+
+		david.sls().SetScreenID(2);
+		david.sls().SelectCamera(CAMERA_NAME);
+
+		std::string path = FULL_SCAN_PATH;
+
+		david.sls().Calibrate(150.0);
+
+		printf("Place image in frame, then press enter key to scan\n");
+		getchar();  // waits for key
+
+		int num_points = david.sls().Scan();
+
+		std::string name;
+		std::cout << "Please type in a file name\n";
+		std::cin >> name;
+
+		david.sls().ExportMesh(name);
 
 		Plane pl = Plane(1, 1, 0.001, 100);
 
@@ -16,7 +38,7 @@ namespace examples {
 		double eta = 2;
 		double mu = 8.5;
 
-		double perimeter = calculate_perimeter(path, pl, eps1, eps2, eta, mu, 159781, 10000, true);
+		double perimeter = calculate_perimeter(path, pl, eps1, eps2, eta, mu, num_points, 10000, true);
 
 		std::cout << "Perimeter: " << perimeter << "\n";
 	}
