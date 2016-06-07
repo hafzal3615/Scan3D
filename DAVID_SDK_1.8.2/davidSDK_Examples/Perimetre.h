@@ -8,7 +8,7 @@
 #include "helpers.h"
 
 #define CAMERA_NAME "Logitech HD Pro Webcam C920 (4076D97F)"
-#define FULL_SCAN_PATH "C:\\Users\\Jay\\Documents\\Scans\\3d.asc"
+#define FULL_SCAN_PATH "C:\\Users\\Hammad\\Documents\\Scans\\3d.asc"
 
 namespace examples {
 

@@ -7,40 +7,55 @@
 namespace examples {
 
 	void main_Perimetre() {
-		
-		david::Client david;
-		david.Connect();
-
-		david.mainWindow().Show();
-
-		david.sls().SetScreenID(2);
-		david.sls().SelectCamera(CAMERA_NAME);
-
 		std::string path = FULL_SCAN_PATH;
+		int num_points = 0;
+		bool flag = false;
 
-		david.sls().Calibrate(150.0);
+		try
+		{
+			david::Client david;
+			david.Connect();
 
-		printf("Place image in frame, then press enter key to scan\n");
-		getchar();  // waits for key
+			david.mainWindow().Show();
 
-		int num_points = david.sls().Scan();
+			david.sls().SetScreenID(2);
+			david.sls().SelectCamera(CAMERA_NAME);
 
-		std::string name;
-		std::cout << "Please type in a file name\n";
-		std::cin >> name;
+			path = FULL_SCAN_PATH;
 
-		david.sls().ExportMesh(name);
+			david.sls().Calibrate(150.0);
 
-		Plane pl = Plane(1, 1, 0.001, 100);
+			printf("Place image in frame, then press enter key to scan\n");
+			getchar();  // waits for key
 
-		double eps1 = 0.5;
-		double eps2 = 2;
-		double eta = 2;
-		double mu = 8.5;
+			num_points = david.sls().Scan();
+	
+			std::string name;
+			std::cout << "Please type in a file name\n";
+			std::cin >> name;
+			david.sls().ExportMesh(name + ".obj");
+		}
+		catch (david::Exception& e)
+		{
+			e.PrintError();
+			flag = true;
+		}
 
-		double perimeter = calculate_perimeter(path, pl, eps1, eps2, eta, mu, num_points, 10000, true);
+		if (!flag) {
+			Plane pl = Plane(1, 1, 0.001, 100);
 
-		std::cout << "Perimeter: " << perimeter << "\n";
+			double eps1 = 0.5;
+			double eps2 = 2;
+			double eta = 2;
+			double mu = 8.5;
+
+			double perimeter = calculate_perimeter(path, pl, eps1, eps2, eta, mu, num_points, 10000, true);
+
+			std::cout << "Perimeter: " << perimeter << "\n";
+		}
+		else {
+			std::cout << "David process failed, please try again\n";
+		}
 	}
 
 	std::string a[] = {
