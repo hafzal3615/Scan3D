@@ -34,6 +34,7 @@ namespace examples {
 			std::cout << "Please type in a file name\n";
 			std::cin >> name;
 			david.sls().ExportMesh(name + ".obj");
+			david.mainWindow().Hide();
 		}
 		catch (david::Exception& e)
 		{
